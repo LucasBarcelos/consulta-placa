@@ -12,9 +12,20 @@
 		A230269329CE894D0016EFAF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A230269229CE894D0016EFAF /* ViewController.swift */; };
 		A230269629CE894D0016EFAF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A230269429CE894D0016EFAF /* Main.storyboard */; };
 		A230269929CE894D0016EFAF /* Consulta_Placa_Fipe.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A230269729CE894D0016EFAF /* Consulta_Placa_Fipe.xcdatamodeld */; };
-		A230269B29CE89500016EFAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A230269A29CE89500016EFAF /* Assets.xcassets */; };
 		A230269E29CE89500016EFAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A230269C29CE89500016EFAF /* LaunchScreen.storyboard */; };
 		A23026A729CEB21D0016EFAF /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = A23026A629CEB21D0016EFAF /* Lottie */; };
+		A23026AE29CEB3F00016EFAF /* loading_car_white.json in Resources */ = {isa = PBXBuildFile; fileRef = A23026AB29CEB3F00016EFAF /* loading_car_white.json */; };
+		A23026AF29CEB3F00016EFAF /* splashScreen.json in Resources */ = {isa = PBXBuildFile; fileRef = A23026AC29CEB3F00016EFAF /* splashScreen.json */; };
+		A23026B029CEB3F00016EFAF /* loading_car_black.json in Resources */ = {isa = PBXBuildFile; fileRef = A23026AD29CEB3F00016EFAF /* loading_car_black.json */; };
+		A23026B329CEB3FF0016EFAF /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A23026B129CEB3FD0016EFAF /* Colors.xcassets */; };
+		A23026B429CEB3FF0016EFAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A23026B229CEB3FF0016EFAF /* Assets.xcassets */; };
+		A23026B729CEB4240016EFAF /* GL-Nummernschild-Eng.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A23026B629CEB4240016EFAF /* GL-Nummernschild-Eng.ttf */; };
+		A23026BB29CEB4AA0016EFAF /* SplashScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23026BA29CEB4AA0016EFAF /* SplashScreenVC.swift */; };
+		A23026BF29CEB6060016EFAF /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23026BD29CEB5D50016EFAF /* AlertController.swift */; };
+		A23026C029CEB6090016EFAF /* AnimationLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23026BE29CEB5D60016EFAF /* AnimationLoading.swift */; };
+		A23026C429CEB68E0016EFAF /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23026C329CEB68E0016EFAF /* UITextFieldExtension.swift */; };
+		A23026C729CEB6980016EFAF /* NSMutableAttributedStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23026C529CEB6970016EFAF /* NSMutableAttributedStringExtension.swift */; };
+		A23026C829CEB6980016EFAF /* UIDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23026C629CEB6970016EFAF /* UIDeviceExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,9 +35,21 @@
 		A230269229CE894D0016EFAF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A230269529CE894D0016EFAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A230269829CE894D0016EFAF /* Consulta_Placa_Fipe.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Consulta_Placa_Fipe.xcdatamodel; sourceTree = "<group>"; };
-		A230269A29CE89500016EFAF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A230269D29CE89500016EFAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A230269F29CE89500016EFAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A23026AB29CEB3F00016EFAF /* loading_car_white.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading_car_white.json; sourceTree = "<group>"; };
+		A23026AC29CEB3F00016EFAF /* splashScreen.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = splashScreen.json; sourceTree = "<group>"; };
+		A23026AD29CEB3F00016EFAF /* loading_car_black.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading_car_black.json; sourceTree = "<group>"; };
+		A23026B129CEB3FD0016EFAF /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		A23026B229CEB3FF0016EFAF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A23026B629CEB4240016EFAF /* GL-Nummernschild-Eng.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GL-Nummernschild-Eng.ttf"; sourceTree = "<group>"; };
+		A23026BA29CEB4AA0016EFAF /* SplashScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenVC.swift; sourceTree = "<group>"; };
+		A23026BD29CEB5D50016EFAF /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
+		A23026BE29CEB5D60016EFAF /* AnimationLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationLoading.swift; sourceTree = "<group>"; };
+		A23026C229CEB6740016EFAF /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		A23026C329CEB68E0016EFAF /* UITextFieldExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
+		A23026C529CEB6970016EFAF /* NSMutableAttributedStringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedStringExtension.swift; sourceTree = "<group>"; };
+		A23026C629CEB6970016EFAF /* UIDeviceExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDeviceExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,16 +83,84 @@
 		A230268D29CE894D0016EFAF /* Consulta Placa Fipe */ = {
 			isa = PBXGroup;
 			children = (
-				A230268E29CE894D0016EFAF /* AppDelegate.swift */,
-				A230269029CE894D0016EFAF /* SceneDelegate.swift */,
+				A23026C129CEB6660016EFAF /* Extension */,
+				A23026BC29CEB5C70016EFAF /* Util */,
+				A23026A829CEB3770016EFAF /* Supporting Files */,
 				A230269229CE894D0016EFAF /* ViewController.swift */,
 				A230269429CE894D0016EFAF /* Main.storyboard */,
-				A230269A29CE89500016EFAF /* Assets.xcassets */,
-				A230269C29CE89500016EFAF /* LaunchScreen.storyboard */,
 				A230269F29CE89500016EFAF /* Info.plist */,
 				A230269729CE894D0016EFAF /* Consulta_Placa_Fipe.xcdatamodeld */,
 			);
 			path = "Consulta Placa Fipe";
+			sourceTree = "<group>";
+		};
+		A23026A829CEB3770016EFAF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A23026B829CEB4380016EFAF /* SplashScreen */,
+				A23026B529CEB4160016EFAF /* Fonts */,
+				A23026A929CEB3C90016EFAF /* Resource */,
+				A230268E29CE894D0016EFAF /* AppDelegate.swift */,
+				A230269029CE894D0016EFAF /* SceneDelegate.swift */,
+				A230269C29CE89500016EFAF /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A23026A929CEB3C90016EFAF /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				A23026AA29CEB3DF0016EFAF /* Animations */,
+				A23026B229CEB3FF0016EFAF /* Assets.xcassets */,
+				A23026B129CEB3FD0016EFAF /* Colors.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		A23026AA29CEB3DF0016EFAF /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				A23026AD29CEB3F00016EFAF /* loading_car_black.json */,
+				A23026AB29CEB3F00016EFAF /* loading_car_white.json */,
+				A23026AC29CEB3F00016EFAF /* splashScreen.json */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
+		A23026B529CEB4160016EFAF /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				A23026B629CEB4240016EFAF /* GL-Nummernschild-Eng.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		A23026B829CEB4380016EFAF /* SplashScreen */ = {
+			isa = PBXGroup;
+			children = (
+				A23026BA29CEB4AA0016EFAF /* SplashScreenVC.swift */,
+			);
+			path = SplashScreen;
+			sourceTree = "<group>";
+		};
+		A23026BC29CEB5C70016EFAF /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				A23026BD29CEB5D50016EFAF /* AlertController.swift */,
+				A23026BE29CEB5D60016EFAF /* AnimationLoading.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		A23026C129CEB6660016EFAF /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A23026C229CEB6740016EFAF /* UIColorExtension.swift */,
+				A23026C629CEB6970016EFAF /* UIDeviceExtension.swift */,
+				A23026C329CEB68E0016EFAF /* UITextFieldExtension.swift */,
+				A23026C529CEB6970016EFAF /* NSMutableAttributedStringExtension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,9 +227,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A23026AF29CEB3F00016EFAF /* splashScreen.json in Resources */,
 				A230269E29CE89500016EFAF /* LaunchScreen.storyboard in Resources */,
-				A230269B29CE89500016EFAF /* Assets.xcassets in Resources */,
+				A23026AE29CEB3F00016EFAF /* loading_car_white.json in Resources */,
 				A230269629CE894D0016EFAF /* Main.storyboard in Resources */,
+				A23026B029CEB3F00016EFAF /* loading_car_black.json in Resources */,
+				A23026B429CEB3FF0016EFAF /* Assets.xcassets in Resources */,
+				A23026B329CEB3FF0016EFAF /* Colors.xcassets in Resources */,
+				A23026B729CEB4240016EFAF /* GL-Nummernschild-Eng.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,8 +246,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				A230269929CE894D0016EFAF /* Consulta_Placa_Fipe.xcdatamodeld in Sources */,
+				A23026C429CEB68E0016EFAF /* UITextFieldExtension.swift in Sources */,
+				A23026C729CEB6980016EFAF /* NSMutableAttributedStringExtension.swift in Sources */,
 				A230269329CE894D0016EFAF /* ViewController.swift in Sources */,
+				A23026C029CEB6090016EFAF /* AnimationLoading.swift in Sources */,
+				A23026C829CEB6980016EFAF /* UIDeviceExtension.swift in Sources */,
 				A230268F29CE894D0016EFAF /* AppDelegate.swift in Sources */,
+				A23026BB29CEB4AA0016EFAF /* SplashScreenVC.swift in Sources */,
+				A23026BF29CEB6060016EFAF /* AlertController.swift in Sources */,
 				A230269129CE894D0016EFAF /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,8 +399,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 1.0.0;
 				DEVELOPMENT_TEAM = 2E384GW2PK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Consulta Placa Fipe/Info.plist";
@@ -307,12 +410,12 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.lbmobileapps.Consulta-Placa-Fipe";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -329,8 +432,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 1.0.0;
 				DEVELOPMENT_TEAM = 2E384GW2PK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Consulta Placa Fipe/Info.plist";
@@ -339,12 +443,12 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.lbmobileapps.Consulta-Placa-Fipe";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
