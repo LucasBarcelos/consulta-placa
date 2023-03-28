@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SplashVC.swift
 //  Consulta Placa Fipe
 //
 //  Created by Lucas Barcelos on 24/03/23.
@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import Lottie
 
-class ViewController: UIViewController {
+class SplashVC: UIViewController {
 
     // Properties
     private let animationView: LottieAnimationView = {
@@ -35,15 +35,18 @@ class ViewController: UIViewController {
             }, completion: { _ in
                 self.animationView.isHidden = true
                 self.animationView.removeFromSuperview()
-//                self.startApp()
+                self.startApp()
             })
         }
     }
     
     // Methods
-//    func startApp() {
-//        let vc:MenuTabBarController = MenuTabBarController()
-//        self.view.window?.rootViewController = vc
-//        self.view.window?.makeKeyAndVisible()
-//    }
+    func startApp() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "Main") as! UITabBarController
+        let navigationController = UINavigationController(rootViewController: vc)
+        self.view.window?.rootViewController = navigationController
+        vc.navigationController?.isNavigationBarHidden = true
+        self.view.window?.makeKeyAndVisible()
+    }
 }

@@ -22,14 +22,19 @@
 		A23026B729CEB4240016EFAF /* GL-Nummernschild-Eng.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A23026B629CEB4240016EFAF /* GL-Nummernschild-Eng.ttf */; };
 		A23026BF29CEB6060016EFAF /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23026BD29CEB5D50016EFAF /* AlertController.swift */; };
 		A23026C029CEB6090016EFAF /* AnimationLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23026BE29CEB5D60016EFAF /* AnimationLoading.swift */; };
-		A23026C429CEB68E0016EFAF /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23026C329CEB68E0016EFAF /* UITextFieldExtension.swift */; };
-		A23026C729CEB6980016EFAF /* NSMutableAttributedStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23026C529CEB6970016EFAF /* NSMutableAttributedStringExtension.swift */; };
-		A23026C829CEB6980016EFAF /* UIDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23026C629CEB6970016EFAF /* UIDeviceExtension.swift */; };
 		A23026CD29CEB7550016EFAF /* ConsultaPlacaServiceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23026CC29CEB7550016EFAF /* ConsultaPlacaServiceAPI.swift */; };
 		A23026D029CEB7CF0016EFAF /* ConsultaPlacaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23026CF29CEB7CF0016EFAF /* ConsultaPlacaViewModel.swift */; };
 		A23026D429CEB7E40016EFAF /* VehicleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23026D229CEB7E40016EFAF /* VehicleType.swift */; };
 		A23026D529CEB7E40016EFAF /* ConsultaPlacaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23026D329CEB7E40016EFAF /* ConsultaPlacaModel.swift */; };
 		A23026D629CEB8B60016EFAF /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23026C229CEB6740016EFAF /* UIColorExtension.swift */; };
+		A23026E229D0BB420016EFAF /* ConsultaPlaca.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A23026E029D0BB420016EFAF /* ConsultaPlaca.storyboard */; };
+		A23026E429D0BB550016EFAF /* TabelaFipe.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A23026E329D0BB550016EFAF /* TabelaFipe.storyboard */; };
+		A23026E729D0BB690016EFAF /* Favoritos.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A23026E529D0BB690016EFAF /* Favoritos.storyboard */; };
+		A23026E929D0BB750016EFAF /* Configuracoes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A23026E829D0BB750016EFAF /* Configuracoes.storyboard */; };
+		A23026EC29D0BC4A0016EFAF /* ConsultaPlacaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23026EB29D0BC4A0016EFAF /* ConsultaPlacaVC.swift */; };
+		A29402E829D24DDE003EA6EC /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29402E529D24DDD003EA6EC /* UITextFieldExtension.swift */; };
+		A29402E929D24DDE003EA6EC /* NSMutableAttributedStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29402E629D24DDD003EA6EC /* NSMutableAttributedStringExtension.swift */; };
+		A29402EA29D24DDE003EA6EC /* UIDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29402E729D24DDD003EA6EC /* UIDeviceExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,13 +55,18 @@
 		A23026BD29CEB5D50016EFAF /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		A23026BE29CEB5D60016EFAF /* AnimationLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationLoading.swift; sourceTree = "<group>"; };
 		A23026C229CEB6740016EFAF /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
-		A23026C329CEB68E0016EFAF /* UITextFieldExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
-		A23026C529CEB6970016EFAF /* NSMutableAttributedStringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedStringExtension.swift; sourceTree = "<group>"; };
-		A23026C629CEB6970016EFAF /* UIDeviceExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDeviceExtension.swift; sourceTree = "<group>"; };
 		A23026CC29CEB7550016EFAF /* ConsultaPlacaServiceAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsultaPlacaServiceAPI.swift; sourceTree = "<group>"; };
 		A23026CF29CEB7CF0016EFAF /* ConsultaPlacaViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsultaPlacaViewModel.swift; sourceTree = "<group>"; };
 		A23026D229CEB7E40016EFAF /* VehicleType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleType.swift; sourceTree = "<group>"; };
 		A23026D329CEB7E40016EFAF /* ConsultaPlacaModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsultaPlacaModel.swift; sourceTree = "<group>"; };
+		A23026E129D0BB420016EFAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Consulta Placa Fipe/Views/Base.lproj/ConsultaPlaca.storyboard"; sourceTree = "<group>"; };
+		A23026E329D0BB550016EFAF /* TabelaFipe.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TabelaFipe.storyboard; sourceTree = "<group>"; };
+		A23026E629D0BB690016EFAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Consulta Placa Fipe/Views/Base.lproj/Favoritos.storyboard"; sourceTree = "<group>"; };
+		A23026E829D0BB750016EFAF /* Configuracoes.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Configuracoes.storyboard; sourceTree = "<group>"; };
+		A23026EB29D0BC4A0016EFAF /* ConsultaPlacaVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsultaPlacaVC.swift; sourceTree = "<group>"; };
+		A29402E529D24DDD003EA6EC /* UITextFieldExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
+		A29402E629D24DDD003EA6EC /* NSMutableAttributedStringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedStringExtension.swift; sourceTree = "<group>"; };
+		A29402E729D24DDD003EA6EC /* UIDeviceExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDeviceExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,16 +100,13 @@
 		A230268D29CE894D0016EFAF /* Consulta Placa Fipe */ = {
 			isa = PBXGroup;
 			children = (
-				A23026D129CEB7D40016EFAF /* Model */,
-				A23026CE29CEB7C40016EFAF /* ViewModel */,
-				A23026CB29CEB7430016EFAF /* API */,
+				A230269F29CE89500016EFAF /* Info.plist */,
+				A23026D929CEBAE10016EFAF /* CoreData */,
 				A23026C129CEB6660016EFAF /* Extension */,
 				A23026BC29CEB5C70016EFAF /* Util */,
+				A23026CB29CEB7430016EFAF /* API */,
 				A23026A829CEB3770016EFAF /* Supporting Files */,
-				A230269229CE894D0016EFAF /* ViewController.swift */,
-				A230269429CE894D0016EFAF /* Main.storyboard */,
-				A230269F29CE89500016EFAF /* Info.plist */,
-				A230269729CE894D0016EFAF /* Consulta_Placa_Fipe.xcdatamodeld */,
+				A23026D729CEBAB90016EFAF /* Scenes */,
 			);
 			path = "Consulta Placa Fipe";
 			sourceTree = "<group>";
@@ -112,6 +119,8 @@
 				A230268E29CE894D0016EFAF /* AppDelegate.swift */,
 				A230269029CE894D0016EFAF /* SceneDelegate.swift */,
 				A230269C29CE89500016EFAF /* LaunchScreen.storyboard */,
+				A230269229CE894D0016EFAF /* ViewController.swift */,
+				A230269429CE894D0016EFAF /* Main.storyboard */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -156,10 +165,10 @@
 		A23026C129CEB6660016EFAF /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				A29402E629D24DDD003EA6EC /* NSMutableAttributedStringExtension.swift */,
+				A29402E729D24DDD003EA6EC /* UIDeviceExtension.swift */,
+				A29402E529D24DDD003EA6EC /* UITextFieldExtension.swift */,
 				A23026C229CEB6740016EFAF /* UIColorExtension.swift */,
-				A23026C629CEB6970016EFAF /* UIDeviceExtension.swift */,
-				A23026C329CEB68E0016EFAF /* UITextFieldExtension.swift */,
-				A23026C529CEB6970016EFAF /* NSMutableAttributedStringExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -180,13 +189,84 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		A23026D129CEB7D40016EFAF /* Model */ = {
+		A23026D729CEBAB90016EFAF /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				A23026DA29CEBB230016EFAF /* ConsultaPlaca */,
+				A23026DB29CEBB2D0016EFAF /* Fipe */,
+				A23026DC29CEBB340016EFAF /* Favoritos */,
+				A23026DD29CEBB390016EFAF /* Configurações */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		A23026D929CEBAE10016EFAF /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				A230269729CE894D0016EFAF /* Consulta_Placa_Fipe.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		A23026DA29CEBB230016EFAF /* ConsultaPlaca */ = {
+			isa = PBXGroup;
+			children = (
+				A23026EA29D0BC010016EFAF /* ViewController */,
+				A23026DE29CEBB630016EFAF /* Model */,
+				A23026CE29CEB7C40016EFAF /* ViewModel */,
+			);
+			path = ConsultaPlaca;
+			sourceTree = "<group>";
+		};
+		A23026DB29CEBB2D0016EFAF /* Fipe */ = {
+			isa = PBXGroup;
+			children = (
+				A23026E329D0BB550016EFAF /* TabelaFipe.storyboard */,
+				A23026DF29CEBB720016EFAF /* Model */,
+			);
+			path = Fipe;
+			sourceTree = "<group>";
+		};
+		A23026DC29CEBB340016EFAF /* Favoritos */ = {
+			isa = PBXGroup;
+			children = (
+				A23026E529D0BB690016EFAF /* Favoritos.storyboard */,
+			);
+			path = Favoritos;
+			sourceTree = "<group>";
+		};
+		A23026DD29CEBB390016EFAF /* Configurações */ = {
+			isa = PBXGroup;
+			children = (
+				A23026E829D0BB750016EFAF /* Configuracoes.storyboard */,
+			);
+			name = "Configurações";
+			path = "Configurações";
+			sourceTree = "<group>";
+		};
+		A23026DE29CEBB630016EFAF /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				A23026D329CEB7E40016EFAF /* ConsultaPlacaModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A23026DF29CEBB720016EFAF /* Model */ = {
+			isa = PBXGroup;
+			children = (
 				A23026D229CEB7E40016EFAF /* VehicleType.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		A23026EA29D0BC010016EFAF /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A23026E029D0BB420016EFAF /* ConsultaPlaca.storyboard */,
+				A23026EB29D0BC4A0016EFAF /* ConsultaPlacaVC.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,7 +339,11 @@
 				A230269629CE894D0016EFAF /* Main.storyboard in Resources */,
 				A23026B029CEB3F00016EFAF /* loading_car_black.json in Resources */,
 				A23026B429CEB3FF0016EFAF /* Assets.xcassets in Resources */,
+				A23026E229D0BB420016EFAF /* ConsultaPlaca.storyboard in Resources */,
+				A23026E929D0BB750016EFAF /* Configuracoes.storyboard in Resources */,
+				A23026E429D0BB550016EFAF /* TabelaFipe.storyboard in Resources */,
 				A23026B329CEB3FF0016EFAF /* Colors.xcassets in Resources */,
+				A23026E729D0BB690016EFAF /* Favoritos.storyboard in Resources */,
 				A23026B729CEB4240016EFAF /* GL-Nummernschild-Eng.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -271,16 +355,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A29402EA29D24DDE003EA6EC /* UIDeviceExtension.swift in Sources */,
 				A230269929CE894D0016EFAF /* Consulta_Placa_Fipe.xcdatamodeld in Sources */,
+				A23026EC29D0BC4A0016EFAF /* ConsultaPlacaVC.swift in Sources */,
 				A23026D029CEB7CF0016EFAF /* ConsultaPlacaViewModel.swift in Sources */,
 				A23026D629CEB8B60016EFAF /* UIColorExtension.swift in Sources */,
+				A29402E929D24DDE003EA6EC /* NSMutableAttributedStringExtension.swift in Sources */,
 				A23026CD29CEB7550016EFAF /* ConsultaPlacaServiceAPI.swift in Sources */,
-				A23026C429CEB68E0016EFAF /* UITextFieldExtension.swift in Sources */,
-				A23026C729CEB6980016EFAF /* NSMutableAttributedStringExtension.swift in Sources */,
 				A230269329CE894D0016EFAF /* ViewController.swift in Sources */,
 				A23026D429CEB7E40016EFAF /* VehicleType.swift in Sources */,
+				A29402E829D24DDE003EA6EC /* UITextFieldExtension.swift in Sources */,
 				A23026C029CEB6090016EFAF /* AnimationLoading.swift in Sources */,
-				A23026C829CEB6980016EFAF /* UIDeviceExtension.swift in Sources */,
 				A230268F29CE894D0016EFAF /* AppDelegate.swift in Sources */,
 				A23026D529CEB7E40016EFAF /* ConsultaPlacaModel.swift in Sources */,
 				A23026BF29CEB6060016EFAF /* AlertController.swift in Sources */,
@@ -305,6 +390,22 @@
 				A230269D29CE89500016EFAF /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		A23026E029D0BB420016EFAF /* ConsultaPlaca.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A23026E129D0BB420016EFAF /* Base */,
+			);
+			name = ConsultaPlaca.storyboard;
+			sourceTree = "<group>";
+		};
+		A23026E529D0BB690016EFAF /* Favoritos.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A23026E629D0BB690016EFAF /* Base */,
+			);
+			name = Favoritos.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -435,6 +536,7 @@
 				DEVELOPMENT_TEAM = 2E384GW2PK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Consulta Placa Fipe/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Consulta Placa";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -446,7 +548,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.lbmobileapps.Consulta-Placa-Fipe";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lbmobileapps.consultafipeplaca;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -468,6 +570,7 @@
 				DEVELOPMENT_TEAM = 2E384GW2PK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Consulta Placa Fipe/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Consulta Placa";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -479,7 +582,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.lbmobileapps.Consulta-Placa-Fipe";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lbmobileapps.consultafipeplaca;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
