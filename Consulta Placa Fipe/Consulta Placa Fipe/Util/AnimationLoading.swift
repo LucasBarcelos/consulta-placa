@@ -83,8 +83,10 @@ public class AnimationLoading: UIView {
         self.loadingStatus = .running
         self.activity.play()
         self.activity.center = self.center
-        let currentWindow: UIWindow? = UIApplication.shared.keyWindow
-        currentWindow?.addSubview(self)
+        let scenes = UIApplication.shared.connectedScenes
+        let windowScene = scenes.first as? UIWindowScene
+        let window = windowScene?.windows.first
+        window?.addSubview(self)
     }
     
     public func close() {

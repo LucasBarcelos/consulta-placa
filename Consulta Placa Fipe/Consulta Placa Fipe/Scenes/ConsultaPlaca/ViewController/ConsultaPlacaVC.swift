@@ -24,6 +24,7 @@ class ConsultaPlacaVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.alert = AlertController(controller: self)
+        self.consultaPlacaViewModel.delegate(delegate: self)
         self.plateTextField.delegate = self
         configPlateTextField()
     }
