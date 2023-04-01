@@ -29,6 +29,16 @@ class ConsultaPlacaVC: UIViewController {
         configPlateTextField()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "ResultadoPlacaVC") {
+            let vc = segue.destination as! ResultadoConsultaPlacaVC
+            guard let result = sender as? ConsultaPlacaModel else { return }
+            vc.consultaPlacaResultado = result
+            vc.plateIsMercosul = self.plateSwitch.isOn
+            vc.plateTyped = self.plateTextField.text ?? ""
+        }
+    }
+    
     // MARK: - Methods
     func configPlateTextField() {
         self.plateTextField.adjustsFontSizeToFitDevice()
@@ -131,12 +141,10 @@ class ConsultaPlacaVC: UIViewController {
 }
 
 extension ConsultaPlacaVC: ConsultaPlacaViewModelProtocol {
-    func successGoToResult(resultado: ConsultaPlacaModel?) {
+    func successGoToResult(result: ConsultaPlacaModel?) {
         DispatchQueue.main.async {
             AnimationLoading.stop()
-//            let vc:ResultadoConsultaPlacaVC = ResultadoConsultaPlacaVC()
-//            vc.consultaPlacaResultado = resultado
-//            self.navigationController?.pushViewController(vc, animated: true)
+            self.performSegue(withIdentifier: "ResultadoPlacaVC", sender: result)
         }
     }
     

@@ -91,7 +91,6 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="queryButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Cdo-6o-GPz"/>
-                                    <segue destination="q9w-DZ-EyX" kind="show" id="lea-W4-6N1"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -122,6 +121,7 @@
                         <outlet property="plateSwitch" destination="d8O-Cl-Z9F" id="RMd-md-XYU"/>
                         <outlet property="plateTextField" destination="yjs-O4-EEw" id="6Bb-RQ-41U"/>
                         <outlet property="queryButton" destination="n9d-n5-gQ9" id="8z4-Np-wtU"/>
+                        <segue destination="q9w-DZ-EyX" kind="show" identifier="ResultadoPlacaVC" id="phC-wt-J1P"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -150,35 +150,35 @@
         <!--Consulta Placa-->
         <scene sceneID="YiB-Uf-B0P">
             <objects>
-                <viewController id="q9w-DZ-EyX" customClass="ResultadoConsultaPlacaVC" customModule="Consulta_Placa_Fipe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ResultadoPlacaVC" id="q9w-DZ-EyX" customClass="ResultadoConsultaPlacaVC" customModule="Consulta_Placa_Fipe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="N4j-v3-3bX">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J1a-Hx-Bez">
-                                <rect key="frame" x="176" y="127" width="41.333333333333343" height="48"/>
+                                <rect key="frame" x="154.66666666666666" y="127" width="84" height="48"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4px-YJ-Dk4">
-                                        <rect key="frame" x="0.0" y="0.0" width="41.333333333333336" height="48"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4px-YJ-Dk4">
+                                        <rect key="frame" x="18" y="0.0" width="48" height="48"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="48"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="FF8-n8-pN7"/>
-                                    <constraint firstItem="4px-YJ-Dk4" firstAttribute="leading" secondItem="J1a-Hx-Bez" secondAttribute="leading" id="OTd-mD-mtK"/>
-                                    <constraint firstAttribute="trailing" secondItem="4px-YJ-Dk4" secondAttribute="trailing" id="YxJ-59-xeo"/>
+                                    <constraint firstItem="4px-YJ-Dk4" firstAttribute="leading" secondItem="J1a-Hx-Bez" secondAttribute="leading" constant="18" id="OTd-mD-mtK"/>
+                                    <constraint firstAttribute="trailing" secondItem="4px-YJ-Dk4" secondAttribute="trailing" constant="18" id="YxJ-59-xeo"/>
                                     <constraint firstAttribute="bottom" secondItem="4px-YJ-Dk4" secondAttribute="bottom" id="wql-yV-am7"/>
                                     <constraint firstItem="4px-YJ-Dk4" firstAttribute="top" secondItem="J1a-Hx-Bez" secondAttribute="top" id="ytl-8S-rry"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dbs-aA-XzU">
                                 <rect key="frame" x="24" y="207" width="345" height="133"/>
@@ -248,9 +248,15 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YGh-pU-tUV">
-                                <rect key="frame" x="24" y="606" width="345" height="50"/>
-                                <color key="backgroundColor" name="grey3"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Zz-7s-Hvb">
+                                <rect key="frame" x="24" y="570" width="345" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YGh-pU-tUV">
+                                <rect key="frame" x="24" y="623" width="345" height="50"/>
+                                <color key="backgroundColor" name="primary"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Sxv-aY-2xq"/>
                                 </constraints>
@@ -265,6 +271,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="newQuery:" destination="q9w-DZ-EyX" eventType="touchUpInside" id="ytq-m7-isH"/>
                                     <action selector="queryButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IK0-bF-Iqa"/>
                                 </connections>
                             </button>
@@ -272,7 +279,9 @@
                         <viewLayoutGuide key="safeArea" id="bwj-OA-u9H"/>
                         <color key="backgroundColor" name="background"/>
                         <constraints>
+                            <constraint firstItem="9Zz-7s-Hvb" firstAttribute="top" secondItem="PiB-2U-qrV" secondAttribute="bottom" constant="12" id="2VL-Nr-iqg"/>
                             <constraint firstItem="PiB-2U-qrV" firstAttribute="top" secondItem="sTT-p3-0YX" secondAttribute="bottom" constant="12" id="4jb-mA-yio"/>
+                            <constraint firstItem="bwj-OA-u9H" firstAttribute="trailing" secondItem="9Zz-7s-Hvb" secondAttribute="trailing" constant="24" id="5UN-ot-uxJ"/>
                             <constraint firstItem="XAi-Ug-cJP" firstAttribute="top" secondItem="H0F-SY-bNd" secondAttribute="bottom" constant="12" id="846-Ij-UeZ"/>
                             <constraint firstItem="J1a-Hx-Bez" firstAttribute="centerX" secondItem="N4j-v3-3bX" secondAttribute="centerX" id="8ws-KR-1ZZ"/>
                             <constraint firstItem="bwj-OA-u9H" firstAttribute="trailing" secondItem="H0F-SY-bNd" secondAttribute="trailing" constant="24" id="AWK-ZY-zgY"/>
@@ -281,25 +290,49 @@
                             <constraint firstItem="bwj-OA-u9H" firstAttribute="trailing" secondItem="Dbs-aA-XzU" secondAttribute="trailing" constant="24" id="Gj7-di-VbX"/>
                             <constraint firstItem="Dbs-aA-XzU" firstAttribute="top" secondItem="J1a-Hx-Bez" secondAttribute="bottom" constant="32" id="MFP-og-wYC"/>
                             <constraint firstItem="bwj-OA-u9H" firstAttribute="trailing" secondItem="PiB-2U-qrV" secondAttribute="trailing" constant="24" id="N21-3F-6AD"/>
+                            <constraint firstItem="YGh-pU-tUV" firstAttribute="leading" secondItem="bwj-OA-u9H" secondAttribute="leading" constant="24" id="OMH-dR-TUS"/>
                             <constraint firstItem="PiB-2U-qrV" firstAttribute="leading" secondItem="bwj-OA-u9H" secondAttribute="leading" constant="24" id="OWi-e6-fbj"/>
                             <constraint firstItem="QsF-hn-7s7" firstAttribute="leading" secondItem="N4j-v3-3bX" secondAttribute="leading" constant="24" id="PD9-BZ-YBg"/>
                             <constraint firstItem="QsF-hn-7s7" firstAttribute="top" secondItem="qwd-zw-sB7" secondAttribute="bottom" constant="12" id="QKg-sV-yQn"/>
+                            <constraint firstItem="YGh-pU-tUV" firstAttribute="top" secondItem="9Zz-7s-Hvb" secondAttribute="bottom" constant="32" id="Tb7-QU-qQa"/>
                             <constraint firstItem="qwd-zw-sB7" firstAttribute="top" secondItem="XAi-Ug-cJP" secondAttribute="bottom" constant="12" id="Uhc-0n-hFd"/>
                             <constraint firstItem="bwj-OA-u9H" firstAttribute="trailing" secondItem="qwd-zw-sB7" secondAttribute="trailing" constant="24" id="Uij-a8-pIo"/>
+                            <constraint firstItem="9Zz-7s-Hvb" firstAttribute="leading" secondItem="N4j-v3-3bX" secondAttribute="leading" constant="24" id="Uxx-GH-wmf"/>
                             <constraint firstItem="sTT-p3-0YX" firstAttribute="leading" secondItem="N4j-v3-3bX" secondAttribute="leading" constant="24" id="WRa-xY-hhx"/>
                             <constraint firstItem="bwj-OA-u9H" firstAttribute="trailing" secondItem="sTT-p3-0YX" secondAttribute="trailing" constant="24" id="WUZ-Dg-LP4"/>
                             <constraint firstItem="sTT-p3-0YX" firstAttribute="top" secondItem="QsF-hn-7s7" secondAttribute="bottom" constant="12" id="X8a-Nv-dVr"/>
                             <constraint firstItem="bwj-OA-u9H" firstAttribute="trailing" secondItem="QsF-hn-7s7" secondAttribute="trailing" constant="24" id="hQH-tv-B7o"/>
                             <constraint firstItem="H0F-SY-bNd" firstAttribute="leading" secondItem="bwj-OA-u9H" secondAttribute="leading" constant="24" id="mX3-jx-G23"/>
                             <constraint firstItem="XAi-Ug-cJP" firstAttribute="leading" secondItem="N4j-v3-3bX" secondAttribute="leading" constant="24" id="o2X-sJ-377"/>
+                            <constraint firstItem="bwj-OA-u9H" firstAttribute="trailing" secondItem="YGh-pU-tUV" secondAttribute="trailing" constant="24" id="rGF-Ql-YeK"/>
                             <constraint firstItem="Dbs-aA-XzU" firstAttribute="leading" secondItem="bwj-OA-u9H" secondAttribute="leading" constant="24" id="uZo-Hb-ENR"/>
                             <constraint firstItem="qwd-zw-sB7" firstAttribute="leading" secondItem="N4j-v3-3bX" secondAttribute="leading" constant="24" id="vVd-3u-c8X"/>
                             <constraint firstItem="H0F-SY-bNd" firstAttribute="top" secondItem="Dbs-aA-XzU" secondAttribute="bottom" constant="32" id="yhk-O4-0mo"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Consulta Placa" id="W0S-de-9Z9">
-                        <barButtonItem key="rightBarButtonItem" image="favoritoUnchecked" id="RBA-Fc-3fF"/>
+                        <barButtonItem key="backBarButtonItem" title=" " id="Gvf-Va-qWP"/>
+                        <barButtonItem key="rightBarButtonItem" image="favoritoUnchecked" id="RBA-Fc-3fF">
+                            <color key="tintColor" name="secondary"/>
+                            <connections>
+                                <action selector="favoriteButton:" destination="q9w-DZ-EyX" id="i0T-I3-kfv"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="brandLabel" destination="H0F-SY-bNd" id="AtB-c2-qCt"/>
+                        <outlet property="chassiLabel" destination="QsF-hn-7s7" id="xdk-Mx-ZxT"/>
+                        <outlet property="colorLabel" destination="sTT-p3-0YX" id="6CF-wa-02F"/>
+                        <outlet property="countyLabel" destination="PiB-2U-qrV" id="Gzr-Br-bJl"/>
+                        <outlet property="dateLabel" destination="9Zz-7s-Hvb" id="xf7-ee-u8n"/>
+                        <outlet property="favoriteButton" destination="RBA-Fc-3fF" id="uuA-49-9yK"/>
+                        <outlet property="modelLabel" destination="XAi-Ug-cJP" id="HLu-Bx-vlz"/>
+                        <outlet property="plateImage" destination="d1d-UQ-Tb0" id="ah1-U2-A1L"/>
+                        <outlet property="plateLabel" destination="H4h-Xe-kdZ" id="Elx-3B-aqT"/>
+                        <outlet property="situationView" destination="J1a-Hx-Bez" id="Pvf-Uz-x6P"/>
+                        <outlet property="situationlabel" destination="4px-YJ-Dk4" id="Bzd-MT-FGd"/>
+                        <outlet property="yearAndYearModelLabel" destination="qwd-zw-sB7" id="hkd-VG-LDq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gB1-Zp-b8M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -315,6 +348,12 @@
         </namedColor>
         <namedColor name="grey3">
             <color red="0.70980392156862748" green="0.70196078431372544" blue="0.72156862745098038" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primary">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="secondary">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

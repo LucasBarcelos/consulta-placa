@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol ConsultaPlacaViewModelProtocol: AnyObject {
-    func successGoToResult(resultado: ConsultaPlacaModel?)
+    func successGoToResult(result: ConsultaPlacaModel?)
     func erroFetch(message: String)
 }
 
@@ -30,7 +30,7 @@ class ConsultaPlacaViewModel: ConsultaPlacaServiceAPIProtocol {
     
     func success(plate: ConsultaPlacaModel) {
         self.consultaPlaca = plate
-        self.delegate?.successGoToResult(resultado: plate)
+        self.delegate?.successGoToResult(result: plate)
     }
     
     func error(error: Error) {
