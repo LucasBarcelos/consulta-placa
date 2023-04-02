@@ -10,11 +10,12 @@ import CoreData
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        // Request to get the current (last) month and code about FIPE
+        let serviceAPI = FipeReferenceMonthAPI()
+        serviceAPI.fetchReferenceMonth()        
         return true
     }
 

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct VehicleType {
+struct VehicleTypeModel: Codable {
     var type:String
     var typeImage:String
 }

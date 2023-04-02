@@ -25,7 +25,7 @@
 		A23026C029CEB6090016EFAF /* AnimationLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23026BE29CEB5D60016EFAF /* AnimationLoading.swift */; };
 		A23026CD29CEB7550016EFAF /* ConsultaPlacaServiceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23026CC29CEB7550016EFAF /* ConsultaPlacaServiceAPI.swift */; };
 		A23026D029CEB7CF0016EFAF /* ConsultaPlacaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23026CF29CEB7CF0016EFAF /* ConsultaPlacaViewModel.swift */; };
-		A23026D429CEB7E40016EFAF /* VehicleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23026D229CEB7E40016EFAF /* VehicleType.swift */; };
+		A23026D429CEB7E40016EFAF /* VehicleTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23026D229CEB7E40016EFAF /* VehicleTypeModel.swift */; };
 		A23026D529CEB7E40016EFAF /* ConsultaPlacaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23026D329CEB7E40016EFAF /* ConsultaPlacaModel.swift */; };
 		A23026D629CEB8B60016EFAF /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23026C229CEB6740016EFAF /* UIColorExtension.swift */; };
 		A23026E229D0BB420016EFAF /* ConsultaPlaca.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A23026E029D0BB420016EFAF /* ConsultaPlaca.storyboard */; };
@@ -36,6 +36,19 @@
 		A29402E829D24DDE003EA6EC /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29402E529D24DDD003EA6EC /* UITextFieldExtension.swift */; };
 		A29402E929D24DDE003EA6EC /* NSMutableAttributedStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29402E629D24DDD003EA6EC /* NSMutableAttributedStringExtension.swift */; };
 		A29402EA29D24DDE003EA6EC /* UIDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29402E729D24DDD003EA6EC /* UIDeviceExtension.swift */; };
+		A2C8CCE629D85E85000196D2 /* TabelaFipeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C8CCE529D85E85000196D2 /* TabelaFipeVC.swift */; };
+		A2C8CCE929D85F6C000196D2 /* TabelaFipeVeiculoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C8CCE829D85F6C000196D2 /* TabelaFipeVeiculoCell.swift */; };
+		A2C8CCED29D8DBFB000196D2 /* MarcasFipeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C8CCEC29D8DBFB000196D2 /* MarcasFipeVC.swift */; };
+		A2C8CCEF29D8DD63000196D2 /* TabelaFipeGenericCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C8CCEE29D8DD63000196D2 /* TabelaFipeGenericCell.swift */; };
+		A2C8CCF129D8DE08000196D2 /* FipeReferenceMonthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C8CCF029D8DE08000196D2 /* FipeReferenceMonthAPI.swift */; };
+		A2C8CCF329D8DE45000196D2 /* GenericFipeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C8CCF229D8DE45000196D2 /* GenericFipeModel.swift */; };
+		A2C8CCF529D8DF57000196D2 /* ReferenceMonthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C8CCF429D8DF57000196D2 /* ReferenceMonthModel.swift */; };
+		A2C8CCF729D8DFD4000196D2 /* VehicleModelsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C8CCF629D8DFD4000196D2 /* VehicleModelsModel.swift */; };
+		A2C8CCF929D8E047000196D2 /* CompleteFipeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C8CCF829D8E047000196D2 /* CompleteFipeModel.swift */; };
+		A2C8CCFC29D8E1CB000196D2 /* TabelaFipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C8CCFB29D8E1CB000196D2 /* TabelaFipeViewModel.swift */; };
+		A2C8CCFE29D9F0D6000196D2 /* UtilsPreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C8CCFD29D9F0D6000196D2 /* UtilsPreference.swift */; };
+		A2C8CD0029D9F8EF000196D2 /* FipeBrandsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C8CCFF29D9F8EF000196D2 /* FipeBrandsAPI.swift */; };
+		A2C8CD0229D9F9A0000196D2 /* BaseURLServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C8CD0129D9F9A0000196D2 /* BaseURLServices.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,7 +72,7 @@
 		A23026C229CEB6740016EFAF /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		A23026CC29CEB7550016EFAF /* ConsultaPlacaServiceAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsultaPlacaServiceAPI.swift; sourceTree = "<group>"; };
 		A23026CF29CEB7CF0016EFAF /* ConsultaPlacaViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsultaPlacaViewModel.swift; sourceTree = "<group>"; };
-		A23026D229CEB7E40016EFAF /* VehicleType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleType.swift; sourceTree = "<group>"; };
+		A23026D229CEB7E40016EFAF /* VehicleTypeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehicleTypeModel.swift; sourceTree = "<group>"; };
 		A23026D329CEB7E40016EFAF /* ConsultaPlacaModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsultaPlacaModel.swift; sourceTree = "<group>"; };
 		A23026E129D0BB420016EFAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Consulta Placa Fipe/Views/Base.lproj/ConsultaPlaca.storyboard"; sourceTree = "<group>"; };
 		A23026E329D0BB550016EFAF /* TabelaFipe.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TabelaFipe.storyboard; sourceTree = "<group>"; };
@@ -69,6 +82,19 @@
 		A29402E529D24DDD003EA6EC /* UITextFieldExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
 		A29402E629D24DDD003EA6EC /* NSMutableAttributedStringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedStringExtension.swift; sourceTree = "<group>"; };
 		A29402E729D24DDD003EA6EC /* UIDeviceExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDeviceExtension.swift; sourceTree = "<group>"; };
+		A2C8CCE529D85E85000196D2 /* TabelaFipeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabelaFipeVC.swift; sourceTree = "<group>"; };
+		A2C8CCE829D85F6C000196D2 /* TabelaFipeVeiculoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabelaFipeVeiculoCell.swift; sourceTree = "<group>"; };
+		A2C8CCEC29D8DBFB000196D2 /* MarcasFipeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarcasFipeVC.swift; sourceTree = "<group>"; };
+		A2C8CCEE29D8DD63000196D2 /* TabelaFipeGenericCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabelaFipeGenericCell.swift; sourceTree = "<group>"; };
+		A2C8CCF029D8DE08000196D2 /* FipeReferenceMonthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FipeReferenceMonthAPI.swift; sourceTree = "<group>"; };
+		A2C8CCF229D8DE45000196D2 /* GenericFipeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericFipeModel.swift; sourceTree = "<group>"; };
+		A2C8CCF429D8DF57000196D2 /* ReferenceMonthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferenceMonthModel.swift; sourceTree = "<group>"; };
+		A2C8CCF629D8DFD4000196D2 /* VehicleModelsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleModelsModel.swift; sourceTree = "<group>"; };
+		A2C8CCF829D8E047000196D2 /* CompleteFipeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteFipeModel.swift; sourceTree = "<group>"; };
+		A2C8CCFB29D8E1CB000196D2 /* TabelaFipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabelaFipeViewModel.swift; sourceTree = "<group>"; };
+		A2C8CCFD29D9F0D6000196D2 /* UtilsPreference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilsPreference.swift; sourceTree = "<group>"; };
+		A2C8CCFF29D9F8EF000196D2 /* FipeBrandsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FipeBrandsAPI.swift; sourceTree = "<group>"; };
+		A2C8CD0129D9F9A0000196D2 /* BaseURLServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseURLServices.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +186,7 @@
 			children = (
 				A23026BD29CEB5D50016EFAF /* AlertController.swift */,
 				A23026BE29CEB5D60016EFAF /* AnimationLoading.swift */,
+				A2C8CCFD29D9F0D6000196D2 /* UtilsPreference.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -178,7 +205,10 @@
 		A23026CB29CEB7430016EFAF /* API */ = {
 			isa = PBXGroup;
 			children = (
+				A2C8CD0129D9F9A0000196D2 /* BaseURLServices.swift */,
 				A23026CC29CEB7550016EFAF /* ConsultaPlacaServiceAPI.swift */,
+				A2C8CCF029D8DE08000196D2 /* FipeReferenceMonthAPI.swift */,
+				A2C8CCFF29D9F8EF000196D2 /* FipeBrandsAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -223,8 +253,9 @@
 		A23026DB29CEBB2D0016EFAF /* Fipe */ = {
 			isa = PBXGroup;
 			children = (
-				A23026E329D0BB550016EFAF /* TabelaFipe.storyboard */,
+				A2C8CCE429D85B36000196D2 /* ViewController */,
 				A23026DF29CEBB720016EFAF /* Model */,
+				A2C8CCFA29D8E18F000196D2 /* ViewModel */,
 			);
 			path = Fipe;
 			sourceTree = "<group>";
@@ -257,7 +288,11 @@
 		A23026DF29CEBB720016EFAF /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A23026D229CEB7E40016EFAF /* VehicleType.swift */,
+				A23026D229CEB7E40016EFAF /* VehicleTypeModel.swift */,
+				A2C8CCF229D8DE45000196D2 /* GenericFipeModel.swift */,
+				A2C8CCF429D8DF57000196D2 /* ReferenceMonthModel.swift */,
+				A2C8CCF629D8DFD4000196D2 /* VehicleModelsModel.swift */,
+				A2C8CCF829D8E047000196D2 /* CompleteFipeModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -270,6 +305,34 @@
 				A22367AC29D5187900EB9495 /* ResultadoConsultaPlacaVC.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		A2C8CCE429D85B36000196D2 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A2C8CCE729D85F41000196D2 /* Cell */,
+				A23026E329D0BB550016EFAF /* TabelaFipe.storyboard */,
+				A2C8CCE529D85E85000196D2 /* TabelaFipeVC.swift */,
+				A2C8CCEC29D8DBFB000196D2 /* MarcasFipeVC.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		A2C8CCE729D85F41000196D2 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				A2C8CCE829D85F6C000196D2 /* TabelaFipeVeiculoCell.swift */,
+				A2C8CCEE29D8DD63000196D2 /* TabelaFipeGenericCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		A2C8CCFA29D8E18F000196D2 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A2C8CCFB29D8E1CB000196D2 /* TabelaFipeViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -358,20 +421,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2C8CCEF29D8DD63000196D2 /* TabelaFipeGenericCell.swift in Sources */,
 				A29402EA29D24DDE003EA6EC /* UIDeviceExtension.swift in Sources */,
 				A230269929CE894D0016EFAF /* Consulta_Placa_Fipe.xcdatamodeld in Sources */,
+				A2C8CD0229D9F9A0000196D2 /* BaseURLServices.swift in Sources */,
 				A23026EC29D0BC4A0016EFAF /* ConsultaPlacaVC.swift in Sources */,
 				A23026D029CEB7CF0016EFAF /* ConsultaPlacaViewModel.swift in Sources */,
 				A23026D629CEB8B60016EFAF /* UIColorExtension.swift in Sources */,
 				A29402E929D24DDE003EA6EC /* NSMutableAttributedStringExtension.swift in Sources */,
 				A23026CD29CEB7550016EFAF /* ConsultaPlacaServiceAPI.swift in Sources */,
+				A2C8CCF729D8DFD4000196D2 /* VehicleModelsModel.swift in Sources */,
 				A230269329CE894D0016EFAF /* ViewController.swift in Sources */,
-				A23026D429CEB7E40016EFAF /* VehicleType.swift in Sources */,
+				A2C8CCE929D85F6C000196D2 /* TabelaFipeVeiculoCell.swift in Sources */,
+				A2C8CCF529D8DF57000196D2 /* ReferenceMonthModel.swift in Sources */,
+				A23026D429CEB7E40016EFAF /* VehicleTypeModel.swift in Sources */,
 				A29402E829D24DDE003EA6EC /* UITextFieldExtension.swift in Sources */,
+				A2C8CD0029D9F8EF000196D2 /* FipeBrandsAPI.swift in Sources */,
+				A2C8CCED29D8DBFB000196D2 /* MarcasFipeVC.swift in Sources */,
 				A23026C029CEB6090016EFAF /* AnimationLoading.swift in Sources */,
 				A230268F29CE894D0016EFAF /* AppDelegate.swift in Sources */,
+				A2C8CCFC29D8E1CB000196D2 /* TabelaFipeViewModel.swift in Sources */,
 				A23026D529CEB7E40016EFAF /* ConsultaPlacaModel.swift in Sources */,
+				A2C8CCE629D85E85000196D2 /* TabelaFipeVC.swift in Sources */,
+				A2C8CCF329D8DE45000196D2 /* GenericFipeModel.swift in Sources */,
+				A2C8CCFE29D9F0D6000196D2 /* UtilsPreference.swift in Sources */,
+				A2C8CCF929D8E047000196D2 /* CompleteFipeModel.swift in Sources */,
 				A23026BF29CEB6060016EFAF /* AlertController.swift in Sources */,
+				A2C8CCF129D8DE08000196D2 /* FipeReferenceMonthAPI.swift in Sources */,
 				A230269129CE894D0016EFAF /* SceneDelegate.swift in Sources */,
 				A22367AD29D5187900EB9495 /* ResultadoConsultaPlacaVC.swift in Sources */,
 			);

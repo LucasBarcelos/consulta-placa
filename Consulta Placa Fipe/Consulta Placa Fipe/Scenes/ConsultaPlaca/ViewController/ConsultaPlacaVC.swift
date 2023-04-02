@@ -27,6 +27,9 @@ class ConsultaPlacaVC: UIViewController {
         self.consultaPlacaViewModel.delegate(delegate: self)
         self.plateTextField.delegate = self
         configPlateTextField()
+        
+        print("UserDefault - Mês: \(UserDefaults.standard.getMonthReference())")
+        print("UserDefault - Código: \(UserDefaults.standard.getCodeReference())")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

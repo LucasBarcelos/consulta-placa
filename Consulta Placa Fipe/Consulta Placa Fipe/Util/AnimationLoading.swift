@@ -61,6 +61,10 @@ public class AnimationLoading: UIView {
         NotificationCenter.default.addObserver(self, selector: #selector(self.onAppTimeout), name: Notification.Name("AppTimeOut"), object: nil)
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     // Constraints
     private func setUpConstraints() {
         NSLayoutConstraint.activate([

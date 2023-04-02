@@ -16,14 +16,13 @@ class ConsultaPlacaServiceAPI {
     
     // Properties
     var delegate: ConsultaPlacaServiceAPIProtocol?
-    private var baseURL = "https://wdapi.com.br/placas/PLATE/ad263bf1ec2a45149fc49b8a1eb877e5"
     
     // Methods
     public func fetchPlate(plate: String) {
         
         let plateAux = plate.replacingOccurrences(of: "-", with: "")
         
-        guard let url = URL(string: baseURL.replacingOccurrences(of: "PLATE", with: plateAux)) else { return }
+        guard let url = URL(string: BaseURLServices.fetchPlate.replacingOccurrences(of: "PLATE", with: plateAux)) else { return }
         
         let request = URLSession.shared.dataTask(with: url){(data, response, error) in
             if let data = data {

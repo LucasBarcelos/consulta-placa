@@ -15,7 +15,6 @@ protocol ConsultaPlacaViewModelProtocol: AnyObject {
 
 class ConsultaPlacaViewModel: ConsultaPlacaServiceAPIProtocol {
     
-    private var consultaPlaca: ConsultaPlacaModel?
     weak var delegate:ConsultaPlacaViewModelProtocol?
     let serviceAPI:ConsultaPlacaServiceAPI?
     
@@ -29,7 +28,6 @@ class ConsultaPlacaViewModel: ConsultaPlacaServiceAPIProtocol {
     }
     
     func success(plate: ConsultaPlacaModel) {
-        self.consultaPlaca = plate
         self.delegate?.successGoToResult(result: plate)
     }
     
