@@ -1,47 +1,53 @@
 //
-//  TabelaFipeVC.swift
+//  AnoFipeVC.swift
 //  Consulta Placa Fipe
 //
-//  Created by Lucas Barcelos on 01/04/23.
+//  Created by Lucas Barcelos on 02/04/23.
 //
 
 import UIKit
 
-class TabelaFipeVC: UIViewController {
+class AnoFipeVC: UIViewController {
     
     // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: - Properties
-    var vehicles:[VehicleTypeModel] = [VehicleTypeModel(type: "Carro", typeImage: "carIcon"),
-                                  VehicleTypeModel(type: "Moto", typeImage: "motorbikeIcon"),
-                                  VehicleTypeModel(type: "Caminhão", typeImage: "truckIcon")]
-    private let tabelaFipeViewModel: TabelaFipeViewModel = TabelaFipeViewModel(serviceAPI: FipeBrandsAPI())
+    var yearModel: [GenericFipeModel] = []
+    private let completeFipeViewModel: CompleteFipeViewModel = CompleteFipeViewModel(serviceAPI: FipeCompleteAPI())
     var vehicleTypeSelected = 0
+    var brandCodeSelected = 0
+    var modelCodeSelected = 0
+    var yearSelected = ""
     var alert: AlertController?
-    
+
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.delegate = self
+        self.completeFipeViewModel.delegate = self
         self.tableView.dataSource = self
-        self.tabelaFipeViewModel.delegate = self
+        self.tableView.delegate = self
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "MarcasFipeVC") {
-            let vc = segue.destination as! MarcasFipeVC
-            guard let result = sender as? [GenericFipeModel] else { return }
-            vc.brands = result
-            vc.vehicleTypeSelected = self.vehicleTypeSelected
+        if (segue.identifier == "ResultadoFipeVC") {
+            let vc = segue.destination as! ResultadoFipeVC
+            guard let result = sender as? CompleteFipeModel else { return }
+            vc.resultFipe = result
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.topItem?.backButtonTitle = ""
     }
 }
 
 // MARK: - Extension
-extension TabelaFipeVC: UITableViewDelegate, UITableViewDataSource {
+extension AnoFipeVC: UITableViewDelegate, UITableViewDataSource {
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return self.vehicles.count
+        return self.yearModel.count
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -50,9 +56,9 @@ extension TabelaFipeVC: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let cell:TabelaFipeVeiculoCell? = tableView.dequeueReusableCell(withIdentifier: TabelaFipeVeiculoCell.identifier, for: indexPath) as? TabelaFipeVeiculoCell
-
-        cell?.setupCell(data: self.vehicles[indexPath.section])
+        let cell:TabelaFipeGenericCell? = tableView.dequeueReusableCell(withIdentifier: TabelaFipeGenericCell.identifier, for: indexPath) as? TabelaFipeGenericCell
+        
+        cell?.setupCell(data: yearModel[indexPath.section])
         cell?.selectionStyle = .none
         return cell ?? UITableViewCell()
     }
@@ -73,20 +79,22 @@ extension TabelaFipeVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Tipo de veículo selecionado: \(indexPath.section + 1)")
-        self.vehicleTypeSelected = indexPath.section + 1
+        self.yearSelected = yearModel[indexPath.section].value
         DispatchQueue.main.async {
             AnimationLoading.start()
-            self.tabelaFipeViewModel.serviceAPI?.fetchBrands(vehicleType: indexPath.section + 1)
+            self.completeFipeViewModel.serviceAPI?.fetchComplete(vehicleType: self.vehicleTypeSelected,
+                                                                 brandCode: self.brandCodeSelected,
+                                                                 modelCode: self.modelCodeSelected,
+                                                                 yearFuel: self.yearSelected)
         }
     }
 }
 
-extension TabelaFipeVC: TabelaFipeViewModelProtocol {
-    func successGoToResult(brands: [GenericFipeModel]?) {
+extension AnoFipeVC: CompleteFipeViewModelProtocol {
+    func successGoToResult(result: CompleteFipeModel?) {
         DispatchQueue.main.async {
             AnimationLoading.stop()
-            self.performSegue(withIdentifier: "MarcasFipeVC", sender: brands)
+            self.performSegue(withIdentifier: "ResultadoFipeVC", sender: result)
         }
     }
     
@@ -97,5 +105,3 @@ extension TabelaFipeVC: TabelaFipeViewModelProtocol {
         }
     }
 }
-
-

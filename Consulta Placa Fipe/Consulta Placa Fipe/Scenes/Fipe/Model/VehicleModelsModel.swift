@@ -8,5 +8,19 @@
 import Foundation
 
 struct VehicleModelsModel: Codable {
-    var Modelos:[GenericFipeModel]
+    var modelos:[Modelo]
+    
+    enum CodingKeys: String, CodingKey {
+        case modelos = "Modelos"
+    }
+}
+
+struct Modelo: Codable {
+    let label: String
+    let value: Int
+
+    enum CodingKeys: String, CodingKey {
+        case label = "Label"
+        case value = "Value"
+    }
 }

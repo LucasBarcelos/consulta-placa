@@ -13,4 +13,7 @@ class BaseURLServices {
     //Tabela FIPE
     static let fipeMonthReference: String = "http://veiculos.fipe.org.br/api/veiculos/ConsultarTabelaDeReferencia"
     static let fipeBrands: String = "http://veiculos.fipe.org.br/api/veiculos/ConsultarMarcas"
+    static let fipeModels: String = "http://veiculos.fipe.org.br/api/veiculos/ConsultarModelos"
+    static let fipeYearModel: String = "http://veiculos.fipe.org.br/api/veiculos/ConsultarAnoModelo"
+    static let fipeComplete: String = "http://veiculos.fipe.org.br/api/veiculos/ConsultarValorComTodosParametros"
 }

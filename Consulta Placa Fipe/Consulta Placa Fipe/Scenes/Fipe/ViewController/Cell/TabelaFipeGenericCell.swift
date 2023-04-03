@@ -42,5 +42,9 @@ class TabelaFipeGenericCell: UITableViewCell {
     public func setupCell(data: GenericFipeModel) {
         self.typeLabel.text = data.label
     }
+    
+    public func setupCellVehicleModels(data: VehicleModelsModel, index: Int) {
+        self.typeLabel.text = data.modelos[index].label
+    }
 
 }
