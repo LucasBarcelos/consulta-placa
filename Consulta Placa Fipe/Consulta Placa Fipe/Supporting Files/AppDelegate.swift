@@ -7,6 +7,8 @@
 
 import UIKit
 import CoreData
+import Firebase
+import FirebaseCore
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,7 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Request to get the current (last) month and code about FIPE
         let serviceAPI = FipeReferenceMonthAPI()
-        serviceAPI.fetchReferenceMonth()        
+        serviceAPI.fetchReferenceMonth()
+        FirebaseApp.configure()
         return true
     }
 

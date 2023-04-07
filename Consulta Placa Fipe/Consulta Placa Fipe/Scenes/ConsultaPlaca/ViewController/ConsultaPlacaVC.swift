@@ -30,6 +30,7 @@ class ConsultaPlacaVC: UIViewController {
         
         print("UserDefault - Mês: \(UserDefaults.standard.getMonthReference())")
         print("UserDefault - Código: \(UserDefaults.standard.getCodeReference())")
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -130,6 +131,16 @@ class ConsultaPlacaVC: UIViewController {
         self.plateTextField.reloadInputViews()
     }
     
+    func resetImagePlateDismissKeyboard() {
+        guard let switchMercosul = self.plateSwitch else { return }
+        if self.plateTextField.text?.count == 0 {
+            self.neededShowPlaceHolder(show: true, sender: switchMercosul, resetConfig: true)
+        } else {
+            self.neededShowPlaceHolder(show: false, sender: switchMercosul, resetConfig: false)
+        }
+        self.becomeFirstResponder()
+    }
+    
     // MARK: - Actions
     @IBAction func plateSwitch(_ sender: UISwitch) {
         neededShowPlaceHolder(show: true, sender: sender, resetConfig: true)
@@ -170,17 +181,12 @@ extension ConsultaPlacaVC: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        resetImagePlateDismissKeyboard()
         return true
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let switchMercosul = self.plateSwitch else { return }
-        if self.plateTextField.text?.count == 0 {
-            self.neededShowPlaceHolder(show: true, sender: switchMercosul, resetConfig: true)
-        } else {
-            self.neededShowPlaceHolder(show: false, sender: switchMercosul, resetConfig: false)
-        }
-        self.becomeFirstResponder()
+        resetImagePlateDismissKeyboard()
     }
     
     override var canBecomeFirstResponder: Bool {

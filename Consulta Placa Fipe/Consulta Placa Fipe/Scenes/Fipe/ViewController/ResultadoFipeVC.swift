@@ -19,7 +19,6 @@ class ResultadoFipeVC: UIViewController {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var refereceMonthLabel: UILabel!
     @IBOutlet weak var newQueryButton: UIButton!
-    @IBOutlet weak var favoriteButton: UIBarButtonItem!
     
     // MARK: - Properties
     var resultFipe: CompleteFipeModel?
@@ -42,8 +41,6 @@ class ResultadoFipeVC: UIViewController {
 
     // MARK: - Actions
     @IBAction func newQueryButton(_ sender: UIButton) {
-    }
-    
-    @IBAction func favoriteButton(_ sender: UIBarButtonItem) {
+        self.navigationController?.popToRootViewController(animated: true)
     }
 }

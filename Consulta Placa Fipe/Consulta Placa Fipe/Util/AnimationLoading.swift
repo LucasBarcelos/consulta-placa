@@ -121,7 +121,7 @@ public class AnimationLoading: UIView {
     
     // MARK: - Timeout
     func scheduleTimeoutVerify() {
-        timeoutTimer = Timer.scheduledTimer(timeInterval: 90,
+        timeoutTimer = Timer.scheduledTimer(timeInterval: 35,
                                             target: self,
                                             selector: #selector(timeoutVerify(_:)),
                                             userInfo: Int(Date().timeIntervalSince1970),

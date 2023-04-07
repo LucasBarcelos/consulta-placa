@@ -10,7 +10,6 @@ import UIKit
 class ResultadoConsultaPlacaVC: UIViewController {
     
     // Outlets
-    @IBOutlet weak var favoriteButton: UIBarButtonItem?
     @IBOutlet weak var situationlabel: UILabel?
     @IBOutlet weak var situationView: UIView?
     @IBOutlet weak var plateImage: UIImageView?
@@ -49,17 +48,7 @@ class ResultadoConsultaPlacaVC: UIViewController {
         self.chassiLabel?.attributedText = NSMutableAttributedString().bold("Chassi: ").normal("\(carro.chassi)")
         self.colorLabel?.attributedText = NSMutableAttributedString().bold("Cor: ").normal("\(carro.cor)")
         self.countyLabel?.attributedText = NSMutableAttributedString().bold("Cidade: ").normal("\(carro.municipio) - \(carro.uf)")
-        self.dateLabel?.attributedText = NSMutableAttributedString().bold("Data da Consulta: ").normal("\(carro.data)")
-    }
-    
-    func configFavoriteNavBarButton() {
-        let favoriteBarButtonItem = UIBarButtonItem(image: UIImage(named: "favoritoUnchecked"), style: .plain, target: self, action: #selector(favorite))
-        self.navigationItem.rightBarButtonItem = favoriteBarButtonItem
-        self.navigationItem.rightBarButtonItem?.tintColor = .cpSecondaryMain
-    }
-    
-    @objc private func favorite() {
-        print("Favorito")
+        self.dateLabel?.attributedText = NSMutableAttributedString().bold("Data da consulta: ").normal("\(carro.data)")
     }
     
     func validatePlateImage() {
@@ -81,9 +70,6 @@ class ResultadoConsultaPlacaVC: UIViewController {
     }
     
     // MARK: - Actions
-    @IBAction func favoriteButton(_ sender: UIButton) {
-    }
-    
     @IBAction func newQuery(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }

@@ -20,13 +20,15 @@ class AnoFipeVC: UIViewController {
     var modelCodeSelected = 0
     var yearSelected = ""
     var alert: AlertController?
-
+    var aux = 0
+    
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.completeFipeViewModel.delegate = self
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        validateYearList()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -40,6 +42,16 @@ class AnoFipeVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.topItem?.backButtonTitle = ""
+    }
+    
+    // MARK: - Methods
+    func validateYearList() {
+        for data in yearModel {
+            if data.label == "32000" || data.label == "32000 Gasolina" {
+                yearModel.remove(at: aux)
+            }
+        }
+        aux = aux + 1
     }
 }
 
@@ -57,8 +69,9 @@ extension AnoFipeVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell:TabelaFipeGenericCell? = tableView.dequeueReusableCell(withIdentifier: TabelaFipeGenericCell.identifier, for: indexPath) as? TabelaFipeGenericCell
-        
-        cell?.setupCell(data: yearModel[indexPath.section])
+        if yearModel[indexPath.section].label != "32000" {
+            cell?.setupCell(data: yearModel[indexPath.section])
+        }
         cell?.selectionStyle = .none
         return cell ?? UITableViewCell()
     }
