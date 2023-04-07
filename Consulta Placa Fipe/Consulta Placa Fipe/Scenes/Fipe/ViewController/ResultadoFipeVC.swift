@@ -19,6 +19,7 @@ class ResultadoFipeVC: UIViewController {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var refereceMonthLabel: UILabel!
     @IBOutlet weak var newQueryButton: UIButton!
+    @IBOutlet weak var shareButton: UIBarButtonItem!
     
     // MARK: - Properties
     var resultFipe: CompleteFipeModel?
@@ -42,5 +43,20 @@ class ResultadoFipeVC: UIViewController {
     // MARK: - Actions
     @IBAction func newQueryButton(_ sender: UIButton) {
         self.navigationController?.popToRootViewController(animated: true)
+    }
+    
+    @IBAction func shareButton(_ sender: UIBarButtonItem) {
+        // Screenshot:
+        UIGraphicsBeginImageContextWithOptions(self.view.frame.size, true, 0.0)
+        self.view.drawHierarchy(in: self.view.frame, afterScreenUpdates: false)
+        let img = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        //Set the link, message, image to share.
+        if let img = img {
+            let objectsToShare = [img] as [Any]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            self.present(activityVC, animated: true, completion: nil)
+        }
     }
 }

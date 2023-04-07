@@ -21,6 +21,7 @@ class ResultadoConsultaPlacaVC: UIViewController {
     @IBOutlet weak var colorLabel: UILabel?
     @IBOutlet weak var countyLabel: UILabel?
     @IBOutlet weak var dateLabel: UILabel?
+    @IBOutlet weak var shareButton: UIBarButtonItem!
     
     // Properties
     var consultaPlacaResultado: ConsultaPlacaModel?
@@ -74,4 +75,18 @@ class ResultadoConsultaPlacaVC: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func shareButton(_ sender: UIBarButtonItem) {
+        // Screenshot:
+        UIGraphicsBeginImageContextWithOptions(self.view.frame.size, true, 0.0)
+        self.view.drawHierarchy(in: self.view.frame, afterScreenUpdates: false)
+        let img = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        //Set the link, message, image to share.
+        if let img = img {
+            let objectsToShare = [img] as [Any]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            self.present(activityVC, animated: true, completion: nil)
+        }
+    }
 }

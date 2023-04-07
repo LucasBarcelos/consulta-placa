@@ -494,6 +494,12 @@
                     </view>
                     <navigationItem key="navigationItem" title="Tabela Fipe" id="V0M-lj-gnR">
                         <barButtonItem key="backBarButtonItem" title=" " id="0xa-U1-d1A"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="Jbd-z6-r1W">
+                            <color key="tintColor" name="secondary"/>
+                            <connections>
+                                <action selector="shareButton:" destination="ead-mN-W1c" id="GgJ-mO-98g"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="brandLabel" destination="5Lq-2N-bde" id="R2T-yJ-5Fe"/>
@@ -504,6 +510,7 @@
                         <outlet property="newQueryButton" destination="fGM-5g-iv8" id="rmB-sU-vHS"/>
                         <outlet property="priceLabel" destination="nCW-f3-zgr" id="he8-Ph-Opb"/>
                         <outlet property="refereceMonthLabel" destination="Mm0-Aj-txf" id="iBb-30-CEu"/>
+                        <outlet property="shareButton" destination="Jbd-z6-r1W" id="bK4-kT-fe0"/>
                         <outlet property="yearLabel" destination="fIt-p3-yyn" id="PhE-nU-Wdx"/>
                     </connections>
                 </viewController>
