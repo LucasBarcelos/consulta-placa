@@ -77,8 +77,8 @@ class ResultadoConsultaPlacaVC: UIViewController {
     
     @IBAction func shareButton(_ sender: UIBarButtonItem) {
         // Screenshot:
-        UIGraphicsBeginImageContextWithOptions(self.view.frame.size, true, 0.0)
-        self.view.drawHierarchy(in: self.view.frame, afterScreenUpdates: false)
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: self.view.bounds.width, height: 550.0), true, 0.0)
+        self.view.drawHierarchy(in: CGRectMake(0, -90, view.bounds.size.width, view.bounds.size.height), afterScreenUpdates: true)
         let img = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         

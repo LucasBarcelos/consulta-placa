@@ -30,7 +30,9 @@ class ConsultaPlacaVC: UIViewController {
         
         print("UserDefault - Mês: \(UserDefaults.standard.getMonthReference())")
         print("UserDefault - Código: \(UserDefaults.standard.getCodeReference())")
-
+        configButtonEnable(false)
+        
+        verifyScreenSizeToNotification()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -50,6 +52,14 @@ class ConsultaPlacaVC: UIViewController {
         self.plateTextField.autocorrectionType = .no
         self.plateTextField.autocapitalizationType = .allCharacters
         self.plateTextField.tintColor = .clear
+    }
+    
+    // Register Notification to move screen when keyboard is
+    func verifyScreenSizeToNotification() {
+        if UIDevice().screenType == .small {
+            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        }
     }
     
     func checkPlate(string: String?, str: String?) -> Bool{
@@ -139,6 +149,18 @@ class ConsultaPlacaVC: UIViewController {
             self.neededShowPlaceHolder(show: false, sender: switchMercosul, resetConfig: false)
         }
         self.becomeFirstResponder()
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if self.view.frame.origin.y == 0 {
+            self.view.frame.origin.y -= 100
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
     }
     
     // MARK: - Actions

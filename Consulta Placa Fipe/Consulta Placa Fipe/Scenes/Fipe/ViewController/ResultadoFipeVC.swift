@@ -34,9 +34,9 @@ class ResultadoFipeVC: UIViewController {
         self.yearLabel.attributedText = NSMutableAttributedString().bold("Ano/Modelo: ").normal("\(resultado.AnoModelo)")
         self.fuelLabel.attributedText = NSMutableAttributedString().bold("Combustível: ").normal("\(resultado.Combustivel)")
         self.fipeCodeLabel.attributedText = NSMutableAttributedString().bold("Código FIPE: ").normal("\(resultado.CodigoFipe)")
-        self.dateQueryLabel.text = resultado.DataConsulta
-        self.priceLabel.text = resultado.Valor
         self.refereceMonthLabel.attributedText = NSMutableAttributedString().bold("Mês de Referência: ").normal("\(resultado.MesReferencia)")
+        self.dateQueryLabel.attributedText = NSMutableAttributedString().bold(resultado.DataConsulta)
+        self.priceLabel.text = resultado.Valor
     }
     
 

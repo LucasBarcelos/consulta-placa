@@ -10,6 +10,7 @@ import CoreData
 import Firebase
 import FirebaseCore
 import FirebaseMessaging
+import GoogleMobileAds
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate {
@@ -22,8 +23,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         let serviceAPI = FipeReferenceMonthAPI()
         serviceAPI.fetchReferenceMonth()
         
-        // Firebase Config
+        // Use Firebase library to configure APIs.
         FirebaseApp.configure()
+        
+        // Initialize the Google Mobile Ads SDK.
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
         
         // [START set_messaging_delegate]
         Messaging.messaging().delegate = self

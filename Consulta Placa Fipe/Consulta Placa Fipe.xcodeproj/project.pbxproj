@@ -42,6 +42,7 @@
 		A267F5BD29E0D8F00006E817 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = A267F5BC29E0D8F00006E817 /* FirebaseMessaging */; };
 		A267F5BF29E0D8F00006E817 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = A267F5BE29E0D8F00006E817 /* FirebaseRemoteConfig */; };
 		A267F5C129E0D8F00006E817 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = A267F5C029E0D8F00006E817 /* FirebaseStorage */; };
+		A267F5C429E0E9D60006E817 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = A267F5C329E0E9D60006E817 /* GoogleMobileAds */; };
 		A29402E829D24DDE003EA6EC /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29402E529D24DDD003EA6EC /* UITextFieldExtension.swift */; };
 		A29402E929D24DDE003EA6EC /* NSMutableAttributedStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29402E629D24DDD003EA6EC /* NSMutableAttributedStringExtension.swift */; };
 		A29402EA29D24DDE003EA6EC /* UIDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29402E729D24DDD003EA6EC /* UIDeviceExtension.swift */; };
@@ -135,6 +136,7 @@
 				A267F5BD29E0D8F00006E817 /* FirebaseMessaging in Frameworks */,
 				A267F5B529E0D8F00006E817 /* FirebaseAnalytics in Frameworks */,
 				A267F5B929E0D8F00006E817 /* FirebaseCrashlytics in Frameworks */,
+				A267F5C429E0E9D60006E817 /* GoogleMobileAds in Frameworks */,
 				A267F5BF29E0D8F00006E817 /* FirebaseRemoteConfig in Frameworks */,
 				A267F5B729E0D8F00006E817 /* FirebaseAuth in Frameworks */,
 				A267F5C129E0D8F00006E817 /* FirebaseStorage in Frameworks */,
@@ -426,6 +428,7 @@
 				A267F5BC29E0D8F00006E817 /* FirebaseMessaging */,
 				A267F5BE29E0D8F00006E817 /* FirebaseRemoteConfig */,
 				A267F5C029E0D8F00006E817 /* FirebaseStorage */,
+				A267F5C329E0E9D60006E817 /* GoogleMobileAds */,
 			);
 			productName = "Consulta Placa Fipe";
 			productReference = A230268B29CE894D0016EFAF /* Consulta Placa Fipe.app */;
@@ -458,6 +461,7 @@
 			packageReferences = (
 				A23026A529CEB21C0016EFAF /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				A267F5B329E0D8F00006E817 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				A267F5C229E0E9D60006E817 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 			);
 			productRefGroup = A230268C29CE894D0016EFAF /* Products */;
 			projectDirPath = "";
@@ -726,7 +730,7 @@
 				DEVELOPMENT_TEAM = 2E384GW2PK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Consulta Placa Fipe/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Consulta Placa";
+				INFOPLIST_KEY_CFBundleDisplayName = "Placa e FIPE";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -738,6 +742,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lbmobileapps.consultafipeplaca;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -761,7 +766,7 @@
 				DEVELOPMENT_TEAM = 2E384GW2PK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Consulta Placa Fipe/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Consulta Placa";
+				INFOPLIST_KEY_CFBundleDisplayName = "Placa e FIPE";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -773,6 +778,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lbmobileapps.consultafipeplaca;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -824,6 +830,14 @@
 				minimumVersion = 10.0.0;
 			};
 		};
+		A267F5C229E0E9D60006E817 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -866,6 +880,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A267F5B329E0D8F00006E817 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		A267F5C329E0E9D60006E817 /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A267F5C229E0E9D60006E817 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
 		};
 /* End XCSwiftPackageProductDependency section */
 

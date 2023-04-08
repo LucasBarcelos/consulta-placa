@@ -9,13 +9,10 @@ import Foundation
 import UIKit
 
 extension NSMutableAttributedString {
-    var fontSize:CGFloat { return 20 }
-    var boldFont:UIFont { return UIFont.boldSystemFont(ofSize: fontSize) }
-    var normalFont:UIFont { return UIFont.systemFont(ofSize: fontSize) }
     
     func bold(_ value:String) -> NSMutableAttributedString {
         
-        let attributes:[NSAttributedString.Key : Any] = [.font : boldFont]
+        let attributes:[NSAttributedString.Key : Any] = [.font : boldSystemFont()]
     
         self.append(NSAttributedString(string: value, attributes:attributes))
         return self
@@ -23,9 +20,31 @@ extension NSMutableAttributedString {
     
     func normal(_ value:String) -> NSMutableAttributedString {
         
-        let attributes:[NSAttributedString.Key : Any] = [.font : normalFont]
+        let attributes:[NSAttributedString.Key : Any] = [.font : normalSystemFont()]
         
         self.append(NSAttributedString(string: value, attributes:attributes))
         return self
+    }
+    
+    func normalSystemFont() -> UIFont {
+        switch UIDevice().screenType {
+        case .small:
+            return UIFont.systemFont(ofSize: 16)
+        case .medium:
+            return UIFont.systemFont(ofSize: 16)
+        case .large:
+            return UIFont.systemFont(ofSize: 20)
+        }
+    }
+    
+    func boldSystemFont() -> UIFont {
+        switch UIDevice().screenType {
+        case .small:
+            return UIFont.boldSystemFont(ofSize: 16)
+        case .medium:
+            return UIFont.boldSystemFont(ofSize: 16)
+        case .large:
+            return UIFont.boldSystemFont(ofSize: 20)
+        }
     }
 }

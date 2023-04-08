@@ -67,12 +67,24 @@ public class AnimationLoading: UIView {
     
     // Constraints
     private func setUpConstraints() {
+        var sizeAnimation: CGFloat = 0
+        
+        switch UIDevice().screenType {
+        case .small:
+            sizeAnimation = 200
+        case .medium:
+            sizeAnimation = 250
+        case .large:
+            sizeAnimation = 300
+        }
+        
+        
         NSLayoutConstraint.activate([
             // animation
             self.activity.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
             self.activity.centerYAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerYAnchor),
-            self.activity.heightAnchor.constraint(equalToConstant: 300),
-            self.activity.widthAnchor.constraint(equalToConstant: 300)
+            self.activity.heightAnchor.constraint(equalToConstant: sizeAnimation),
+            self.activity.widthAnchor.constraint(equalToConstant: sizeAnimation)
         ])
     }
             
