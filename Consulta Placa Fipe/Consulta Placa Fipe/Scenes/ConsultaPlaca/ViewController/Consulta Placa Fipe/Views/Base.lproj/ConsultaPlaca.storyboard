@@ -93,6 +93,12 @@
                                     <action selector="queryButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Cdo-6o-GPz"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sem conexão" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZWg-eu-hQ4">
+                                <rect key="frame" x="24" y="459.66666666666669" width="345" height="14.333333333333314"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" name="red"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="background"/>
@@ -100,12 +106,15 @@
                             <constraint firstItem="XTe-0O-kte" firstAttribute="top" secondItem="d8O-Cl-Z9F" secondAttribute="bottom" constant="16" id="2EQ-E7-Rnl"/>
                             <constraint firstItem="d8O-Cl-Z9F" firstAttribute="centerY" secondItem="Q3i-Vt-7VT" secondAttribute="centerY" id="3oV-s8-nOO"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="d8O-Cl-Z9F" secondAttribute="trailing" constant="32" id="6Nx-8t-BP1"/>
+                            <constraint firstItem="ZWg-eu-hQ4" firstAttribute="top" secondItem="n9d-n5-gQ9" secondAttribute="bottom" constant="8" id="6SG-OT-o7e"/>
                             <constraint firstItem="XTe-0O-kte" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="8Qp-zn-gpW"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XTe-0O-kte" secondAttribute="trailing" constant="24" id="CwS-zu-K9V"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZWg-eu-hQ4" secondAttribute="trailing" constant="24" id="FsT-8S-uRP"/>
                             <constraint firstItem="n9d-n5-gQ9" firstAttribute="top" secondItem="XTe-0O-kte" secondAttribute="bottom" constant="24" id="JK9-l5-a3m"/>
                             <constraint firstItem="Q3i-Vt-7VT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="PcM-wR-kGx"/>
                             <constraint firstItem="n9d-n5-gQ9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="PpU-NQ-ald"/>
                             <constraint firstItem="Q3i-Vt-7VT" firstAttribute="top" secondItem="ao9-Ef-eJc" secondAttribute="bottom" constant="35" id="R5R-GE-icl"/>
+                            <constraint firstItem="ZWg-eu-hQ4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="UOn-0G-vJB"/>
                             <constraint firstItem="d8O-Cl-Z9F" firstAttribute="leading" secondItem="Q3i-Vt-7VT" secondAttribute="trailing" constant="16" id="YMy-Wa-KT2"/>
                             <constraint firstItem="ao9-Ef-eJc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="dsY-0l-5dt"/>
                             <constraint firstItem="ao9-Ef-eJc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="24" id="jyk-hR-SZ6"/>
@@ -117,6 +126,7 @@
                     <navigationItem key="navigationItem" title="Consulta Placa" id="c6f-0n-vPs"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="connectionLabel" destination="ZWg-eu-hQ4" id="hDA-iR-2pb"/>
                         <outlet property="plateImage" destination="zaV-ox-lNh" id="vt0-cD-7U3"/>
                         <outlet property="plateSwitch" destination="d8O-Cl-Z9F" id="RMd-md-XYU"/>
                         <outlet property="plateTextField" destination="yjs-O4-EEw" id="6Bb-RQ-41U"/>
@@ -377,6 +387,9 @@
         </namedColor>
         <namedColor name="primary">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="red">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="secondary">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

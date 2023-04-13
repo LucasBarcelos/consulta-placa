@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import Reachability
 
 class AnoFipeVC: UIViewController {
     
     // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var connectionLabel: UILabel!
     
     // MARK: - Properties
     var yearModel: [GenericFipeModel] = []
@@ -21,6 +23,7 @@ class AnoFipeVC: UIViewController {
     var yearSelected = ""
     var alert: AlertController?
     var aux = 0
+    let reachability = try! Reachability()
     
     // MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -31,17 +34,32 @@ class AnoFipeVC: UIViewController {
         validateYearList()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.topItem?.backButtonTitle = ""
+        self.navigationController?.navigationBar.topItem?.backButtonTitle = ""
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(note:)), name: .reachabilityChanged, object: reachability)
+        do{
+            try reachability.startNotifier()
+        }catch{
+            print("could not start reachability notifier")
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        reachability.stopNotifier()
+        NotificationCenter.default.removeObserver(self, name: .reachabilityChanged, object: reachability)
+        print("Notification Removida - Consulta ANO FIPE")
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "ResultadoFipeVC") {
             let vc = segue.destination as! ResultadoFipeVC
             guard let result = sender as? CompleteFipeModel else { return }
             vc.resultFipe = result
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.topItem?.backButtonTitle = ""
     }
     
     // MARK: - Methods
@@ -52,6 +70,25 @@ class AnoFipeVC: UIViewController {
             }
         }
         aux = aux + 1
+    }
+    
+    @objc func reachabilityChanged(note: Notification) {
+        let reachability = note.object as! Reachability
+        
+        switch reachability.connection {
+        case .wifi:
+            self.tableView.isUserInteractionEnabled = true
+            self.connectionLabel.text = ""
+            print("Conexão via WiFi - Consulta ANO FIPE")
+        case .cellular:
+            self.tableView.isUserInteractionEnabled = true
+            self.connectionLabel.text = ""
+            print("Conexão via Cellular - Consulta ANO FIPE")
+        case .unavailable:
+            self.tableView.isUserInteractionEnabled = false
+            self.connectionLabel.text = "Sem conexão"
+            print("Sem conexão - Consulta ANO FIPE")
+        }
     }
 }
 

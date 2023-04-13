@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import Reachability
 
 class ModelosFipeVC: UIViewController {
     
     // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var connectionLabel: UILabel!
     
     // MARK: - Properties
     var models: VehicleModelsModel?
@@ -19,6 +21,7 @@ class ModelosFipeVC: UIViewController {
     var brandCodeSelected = 0
     var modelCodeSelected = 0
     var alert: AlertController?
+    let reachability = try! Reachability()
 
     // MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -26,6 +29,24 @@ class ModelosFipeVC: UIViewController {
         self.anoModeloFipeViewModel.delegate = self
         self.tableView.dataSource = self
         self.tableView.delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.topItem?.backButtonTitle = ""
+        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(note:)), name: .reachabilityChanged, object: reachability)
+        do{
+            try reachability.startNotifier()
+        }catch{
+            print("could not start reachability notifier")
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        reachability.stopNotifier()
+        NotificationCenter.default.removeObserver(self, name: .reachabilityChanged, object: reachability)
+        print("Notification Removida - Consulta MODELOS FIPE")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -39,9 +60,24 @@ class ModelosFipeVC: UIViewController {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.topItem?.backButtonTitle = ""
+    // MARK: - Methods
+    @objc func reachabilityChanged(note: Notification) {
+        let reachability = note.object as! Reachability
+        
+        switch reachability.connection {
+        case .wifi:
+            self.tableView.isUserInteractionEnabled = true
+            self.connectionLabel.text = ""
+            print("Conexão via WiFi - Consulta MODELOS FIPE")
+        case .cellular:
+            self.tableView.isUserInteractionEnabled = true
+            self.connectionLabel.text = ""
+            print("Conexão via Cellular - Consulta MODELOS FIPE")
+        case .unavailable:
+            self.tableView.isUserInteractionEnabled = false
+            self.connectionLabel.text = "Sem conexão"
+            print("Sem conexão - Consulta MODELOS FIPE")
+        }
     }
 }
 

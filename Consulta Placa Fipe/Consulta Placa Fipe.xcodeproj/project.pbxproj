@@ -33,6 +33,7 @@
 		A23026E729D0BB690016EFAF /* Favoritos.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A23026E529D0BB690016EFAF /* Favoritos.storyboard */; };
 		A23026E929D0BB750016EFAF /* Configuracoes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A23026E829D0BB750016EFAF /* Configuracoes.storyboard */; };
 		A23026EC29D0BC4A0016EFAF /* ConsultaPlacaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23026EB29D0BC4A0016EFAF /* ConsultaPlacaVC.swift */; };
+		A266D72129E605290093A2F2 /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = A266D72029E605290093A2F2 /* Reachability */; };
 		A267F59D29DF64830006E817 /* FavoritosVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A267F59C29DF64830006E817 /* FavoritosVC.swift */; };
 		A267F5A129DFCE970006E817 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A267F5A029DFCE960006E817 /* GoogleService-Info.plist */; };
 		A267F5B529E0D8F00006E817 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = A267F5B429E0D8F00006E817 /* FirebaseAnalytics */; };
@@ -140,6 +141,7 @@
 				A267F5BF29E0D8F00006E817 /* FirebaseRemoteConfig in Frameworks */,
 				A267F5B729E0D8F00006E817 /* FirebaseAuth in Frameworks */,
 				A267F5C129E0D8F00006E817 /* FirebaseStorage in Frameworks */,
+				A266D72129E605290093A2F2 /* Reachability in Frameworks */,
 				A267F5BB29E0D8F00006E817 /* FirebaseFirestore in Frameworks */,
 				A23026A729CEB21D0016EFAF /* Lottie in Frameworks */,
 			);
@@ -429,6 +431,7 @@
 				A267F5BE29E0D8F00006E817 /* FirebaseRemoteConfig */,
 				A267F5C029E0D8F00006E817 /* FirebaseStorage */,
 				A267F5C329E0E9D60006E817 /* GoogleMobileAds */,
+				A266D72029E605290093A2F2 /* Reachability */,
 			);
 			productName = "Consulta Placa Fipe";
 			productReference = A230268B29CE894D0016EFAF /* Consulta Placa Fipe.app */;
@@ -462,6 +465,7 @@
 				A23026A529CEB21C0016EFAF /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				A267F5B329E0D8F00006E817 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				A267F5C229E0E9D60006E817 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
+				A266D71F29E605290093A2F2 /* XCRemoteSwiftPackageReference "Reachability" */,
 			);
 			productRefGroup = A230268C29CE894D0016EFAF /* Products */;
 			projectDirPath = "";
@@ -822,6 +826,14 @@
 				minimumVersion = 4.0.0;
 			};
 		};
+		A266D71F29E605290093A2F2 /* XCRemoteSwiftPackageReference "Reachability" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ashleymills/Reachability.swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		A267F5B329E0D8F00006E817 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -845,6 +857,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A23026A529CEB21C0016EFAF /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
+		};
+		A266D72029E605290093A2F2 /* Reachability */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A266D71F29E605290093A2F2 /* XCRemoteSwiftPackageReference "Reachability" */;
+			productName = Reachability;
 		};
 		A267F5B429E0D8F00006E817 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;

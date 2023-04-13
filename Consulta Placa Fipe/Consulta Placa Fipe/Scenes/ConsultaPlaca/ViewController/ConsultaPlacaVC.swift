@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Reachability
 
 class ConsultaPlacaVC: UIViewController {
     
@@ -14,11 +15,13 @@ class ConsultaPlacaVC: UIViewController {
     @IBOutlet weak var plateImage: UIImageView!
     @IBOutlet weak var plateTextField: UITextField!
     @IBOutlet weak var queryButton: UIButton!
+    @IBOutlet weak var connectionLabel: UILabel!
     
     // MARK: - Properties
     private let consultaPlacaViewModel: ConsultaPlacaViewModel = ConsultaPlacaViewModel(serviceAPI: ConsultaPlacaServiceAPI())
     private var plate: String = ""
     var alert: AlertController?
+    let reachability = try! Reachability()
     
     // MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -33,6 +36,23 @@ class ConsultaPlacaVC: UIViewController {
         configButtonEnable(false)
         
         verifyScreenSizeToNotification()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(note:)), name: .reachabilityChanged, object: reachability)
+        do{
+            try reachability.startNotifier()
+        }catch{
+            print("could not start reachability notifier")
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        reachability.stopNotifier()
+        NotificationCenter.default.removeObserver(self, name: .reachabilityChanged, object: reachability)
+        print("Notification Removida - Consulta Placa")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -126,12 +146,39 @@ class ConsultaPlacaVC: UIViewController {
     }
     
     func configButtonEnable(_ enable:Bool) {
-        if enable {
+        if enable && (reachability.connection == .cellular || reachability.connection == .wifi) {
             self.queryButton.backgroundColor = .cpPrimaryMain
             self.queryButton.isEnabled = true
         } else {
             self.queryButton.backgroundColor = .cpGrey3Aux
             self.queryButton.isEnabled = false
+        }
+    }
+    
+    func validateLengthPlate() {
+        if plate.count == 8 {
+            configButtonEnable(true)
+        } else {
+            configButtonEnable(false)
+        }
+    }
+    
+    @objc func reachabilityChanged(note: Notification) {
+        let reachability = note.object as! Reachability
+        
+        switch reachability.connection {
+        case .wifi:
+            connectionLabel.isHidden = true
+            validateLengthPlate()
+            print("Conexão via WiFi - Consulta Placa")
+        case .cellular:
+            connectionLabel.isHidden = true
+            validateLengthPlate()
+            print("Conexão via Cellular - Consulta Placa")
+        case .unavailable:
+            connectionLabel.isHidden = false
+            validateLengthPlate()
+            print("Sem conexão - Consulta Placa")
         }
     }
     

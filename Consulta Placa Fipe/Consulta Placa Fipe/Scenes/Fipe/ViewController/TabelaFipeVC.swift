@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import Reachability
 
 class TabelaFipeVC: UIViewController {
     
     // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var connectionLabel: UILabel!
     
     // MARK: - Properties
     var vehicles:[VehicleTypeModel] = [VehicleTypeModel(type: "Carro", typeImage: "carIcon"),
@@ -19,13 +21,32 @@ class TabelaFipeVC: UIViewController {
     private let tabelaFipeViewModel: TabelaFipeViewModel = TabelaFipeViewModel(serviceAPI: FipeBrandsAPI())
     var vehicleTypeSelected = 0
     var alert: AlertController?
+    let reachability = try! Reachability()
     
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.alert = AlertController(controller: self)
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tabelaFipeViewModel.delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(note:)), name: .reachabilityChanged, object: reachability)
+        do{
+            try reachability.startNotifier()
+        }catch{
+            print("could not start reachability notifier")
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        reachability.stopNotifier()
+        NotificationCenter.default.removeObserver(self, name: .reachabilityChanged, object: reachability)
+        print("Notification Removida - Consulta FIPE")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -34,6 +55,26 @@ class TabelaFipeVC: UIViewController {
             guard let result = sender as? [GenericFipeModel] else { return }
             vc.brands = result
             vc.vehicleTypeSelected = self.vehicleTypeSelected
+        }
+    }
+    
+    // MARK: - Methods
+    @objc func reachabilityChanged(note: Notification) {
+        let reachability = note.object as! Reachability
+        
+        switch reachability.connection {
+        case .wifi:
+            self.tableView.isUserInteractionEnabled = true
+            self.connectionLabel.text = ""
+            print("Conexão via WiFi - Consulta FIPE")
+        case .cellular:
+            self.tableView.isUserInteractionEnabled = true
+            self.connectionLabel.text = ""
+            print("Conexão via Cellular - Consulta FIPE")
+        case .unavailable:
+            self.tableView.isUserInteractionEnabled = false
+            self.connectionLabel.text = "Sem conexão"
+            print("Sem conexão - Consulta FIPE")
         }
     }
 }
@@ -51,7 +92,7 @@ extension TabelaFipeVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell:TabelaFipeVeiculoCell? = tableView.dequeueReusableCell(withIdentifier: TabelaFipeVeiculoCell.identifier, for: indexPath) as? TabelaFipeVeiculoCell
-
+        
         cell?.setupCell(data: self.vehicles[indexPath.section])
         cell?.selectionStyle = .none
         return cell ?? UITableViewCell()
