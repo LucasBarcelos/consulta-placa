@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
 class ResultadoConsultaPlacaVC: UIViewController {
     
@@ -35,6 +36,19 @@ class ResultadoConsultaPlacaVC: UIViewController {
         validateSituationMessage()
         setupData()
         self.navigationItem.hidesBackButton = true
+        
+        DispatchQueue.main.async {
+            if GoogleAdsManager.successCounter >= 2 {
+                if let interstitial = GoogleAdsManager.shared.interstitial {
+                    GoogleAdsManager.successCounter = 0
+                    interstitial.present(fromRootViewController: self)
+                    print("Anúncio intersticial exibido com sucesso!")
+                } else {
+                    print("Anúncio intersticial não está pronto ainda.")
+                }
+            }
+        }
+        
     }
     
     // MARK: - Methods
@@ -77,8 +91,18 @@ class ResultadoConsultaPlacaVC: UIViewController {
     
     @IBAction func shareButton(_ sender: UIBarButtonItem) {
         // Screenshot:
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: self.view.bounds.width, height: 550.0), true, 0.0)
-        self.view.drawHierarchy(in: CGRectMake(0, -90, view.bounds.size.width, view.bounds.size.height), afterScreenUpdates: true)
+        switch UIDevice().screenType {
+        case .small:
+            UIGraphicsBeginImageContextWithOptions(CGSize(width: self.view.bounds.width, height: 480.0), true, 0.0)
+            self.view.drawHierarchy(in: CGRectMake(0, -60, view.bounds.size.width, view.bounds.size.height), afterScreenUpdates: true)
+        case .medium:
+            UIGraphicsBeginImageContextWithOptions(CGSize(width: self.view.bounds.width, height: 520.0), true, 0.0)
+            self.view.drawHierarchy(in: CGRectMake(0, -80, view.bounds.size.width, view.bounds.size.height), afterScreenUpdates: true)
+        case .large:
+            UIGraphicsBeginImageContextWithOptions(CGSize(width: self.view.bounds.width, height: 520.0), true, 0.0)
+            self.view.drawHierarchy(in: CGRectMake(0, -80, view.bounds.size.width, view.bounds.size.height), afterScreenUpdates: true)
+        }
+        
         let img = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         

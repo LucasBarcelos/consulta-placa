@@ -47,6 +47,7 @@
 		A29402E829D24DDE003EA6EC /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29402E529D24DDD003EA6EC /* UITextFieldExtension.swift */; };
 		A29402E929D24DDE003EA6EC /* NSMutableAttributedStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29402E629D24DDD003EA6EC /* NSMutableAttributedStringExtension.swift */; };
 		A29402EA29D24DDE003EA6EC /* UIDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29402E729D24DDD003EA6EC /* UIDeviceExtension.swift */; };
+		A2BC25522A1D6BD400E018F8 /* GoogleAdsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BC25512A1D6BD400E018F8 /* GoogleAdsManager.swift */; };
 		A2C8CCE629D85E85000196D2 /* TabelaFipeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C8CCE529D85E85000196D2 /* TabelaFipeVC.swift */; };
 		A2C8CCE929D85F6C000196D2 /* TabelaFipeVeiculoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C8CCE829D85F6C000196D2 /* TabelaFipeVeiculoCell.swift */; };
 		A2C8CCED29D8DBFB000196D2 /* MarcasFipeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C8CCEC29D8DBFB000196D2 /* MarcasFipeVC.swift */; };
@@ -105,6 +106,7 @@
 		A29402E529D24DDD003EA6EC /* UITextFieldExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
 		A29402E629D24DDD003EA6EC /* NSMutableAttributedStringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedStringExtension.swift; sourceTree = "<group>"; };
 		A29402E729D24DDD003EA6EC /* UIDeviceExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDeviceExtension.swift; sourceTree = "<group>"; };
+		A2BC25512A1D6BD400E018F8 /* GoogleAdsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAdsManager.swift; sourceTree = "<group>"; };
 		A2C8CCE529D85E85000196D2 /* TabelaFipeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabelaFipeVC.swift; sourceTree = "<group>"; };
 		A2C8CCE829D85F6C000196D2 /* TabelaFipeVeiculoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabelaFipeVeiculoCell.swift; sourceTree = "<group>"; };
 		A2C8CCEC29D8DBFB000196D2 /* MarcasFipeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarcasFipeVC.swift; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 				A23026BD29CEB5D50016EFAF /* AlertController.swift */,
 				A23026BE29CEB5D60016EFAF /* AnimationLoading.swift */,
 				A2C8CCFD29D9F0D6000196D2 /* UtilsPreference.swift */,
+				A2BC25512A1D6BD400E018F8 /* GoogleAdsManager.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -536,6 +539,7 @@
 				A23026D629CEB8B60016EFAF /* UIColorExtension.swift in Sources */,
 				A29402E929D24DDE003EA6EC /* NSMutableAttributedStringExtension.swift in Sources */,
 				A23026CD29CEB7550016EFAF /* ConsultaPlacaServiceAPI.swift in Sources */,
+				A2BC25522A1D6BD400E018F8 /* GoogleAdsManager.swift in Sources */,
 				A2C8CD0E29DA5DDD000196D2 /* FipeYearModelAPI.swift in Sources */,
 				A2C8CCF729D8DFD4000196D2 /* VehicleModelsModel.swift in Sources */,
 				A230269329CE894D0016EFAF /* ViewController.swift in Sources */,
@@ -728,6 +732,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = "Consulta Placa Fipe/Consulta Placa Fipe.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0.0;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -749,6 +754,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lbmobileapps.consultafipeplaca;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -765,6 +771,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = "Consulta Placa Fipe/Consulta Placa Fipe.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0.0;
 				DEVELOPMENT_TEAM = 2E384GW2PK;
@@ -785,6 +792,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lbmobileapps.consultafipeplaca;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;

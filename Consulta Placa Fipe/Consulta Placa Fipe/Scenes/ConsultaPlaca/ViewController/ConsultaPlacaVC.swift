@@ -7,6 +7,7 @@
 
 import UIKit
 import Reachability
+import GoogleMobileAds
 
 class ConsultaPlacaVC: UIViewController {
     
@@ -46,6 +47,7 @@ class ConsultaPlacaVC: UIViewController {
         }catch{
             print("could not start reachability notifier")
         }
+        GoogleAdsManager.shared.loadInterstitialAd()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -227,6 +229,7 @@ extension ConsultaPlacaVC: ConsultaPlacaViewModelProtocol {
     func successGoToResult(result: ConsultaPlacaModel?) {
         DispatchQueue.main.async {
             AnimationLoading.stop()
+            GoogleAdsManager.successCounter += 1
             self.performSegue(withIdentifier: "ResultadoPlacaVC", sender: result)
         }
     }
