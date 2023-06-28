@@ -21,6 +21,18 @@ class MarcasFipeVC: UIViewController {
     var brandCodeSelected = 0
     var alert: AlertController?
     let reachability = try! Reachability()
+    
+    // Search Bar
+    var filteredBrands: [GenericFipeModel] = []
+    private let searchController = UISearchController(searchResultsController: nil)
+    private var searchBarIsEmpty: Bool {
+        guard let text = searchController.searchBar.text else { return false }
+        return text.isEmpty
+    }
+    
+    private var isFiltering: Bool {
+        return searchController.isActive && !searchBarIsEmpty
+    }
 
     // MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -28,6 +40,7 @@ class MarcasFipeVC: UIViewController {
         self.marcasFipeViewModel.delegate = self
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        configureSearch()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,12 +67,24 @@ class MarcasFipeVC: UIViewController {
             let vc = segue.destination as! ModelosFipeVC
             guard let result = sender as? VehicleModelsModel else { return }
             vc.models = result
+            vc.filteredModels = result
             vc.vehicleTypeSelected = self.vehicleTypeSelected
             vc.brandCodeSelected = self.brandCodeSelected
         }
     }
     
     // MARK: - Methods
+    private func configureSearch() {
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Pesquise uma marca..."
+        searchController.searchBar.barTintColor = .white
+        
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        definesPresentationContext = true
+    }
+    
     @objc func reachabilityChanged(note: Notification) {
         let reachability = note.object as! Reachability
         
@@ -84,7 +109,7 @@ class MarcasFipeVC: UIViewController {
 extension MarcasFipeVC: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return self.brands.count
+        isFiltering ? filteredBrands.count : brands.count
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -95,7 +120,9 @@ extension MarcasFipeVC: UITableViewDelegate, UITableViewDataSource {
 
         let cell:TabelaFipeGenericCell? = tableView.dequeueReusableCell(withIdentifier: TabelaFipeGenericCell.identifier, for: indexPath) as? TabelaFipeGenericCell
 
-        cell?.setupCell(data: self.brands[indexPath.section])
+        let brand = isFiltering ? filteredBrands[indexPath.section] : brands[indexPath.section]
+        
+        cell?.setupCell(data: brand)
         cell?.selectionStyle = .none
         return cell ?? UITableViewCell()
     }
@@ -116,8 +143,11 @@ extension MarcasFipeVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Marca selecionado: \(brands[indexPath.section].label) - Código da Marca: \(brands[indexPath.section].value)")
-        guard let brandCode = Int(brands[indexPath.section].value) else { return }
+        
+        let brand = isFiltering ? filteredBrands[indexPath.section] : brands[indexPath.section]
+        
+        print("Marca selecionado: \(brand.label) - Código da Marca: \(brand.value)")
+        guard let brandCode = Int(brand.value) else { return }
         self.brandCodeSelected = brandCode
         DispatchQueue.main.async {
             AnimationLoading.start()
@@ -139,5 +169,19 @@ extension MarcasFipeVC: MarcasFipeViewModelProtocol {
             AnimationLoading.stop()
             self.alert?.alertInformation(title: "Atenção", message: message)
         }
+    }
+}
+
+// MARK: - Extension - Search Results Updating
+extension MarcasFipeVC: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchController.searchBar.text ?? "")
+    }
+    
+    private func filterContentForSearchText(_ searchText: String) {
+        filteredBrands = brands.filter { character in
+            character.label.lowercased().contains(searchText.lowercased())
+        }
+        tableView.reloadData()
     }
 }

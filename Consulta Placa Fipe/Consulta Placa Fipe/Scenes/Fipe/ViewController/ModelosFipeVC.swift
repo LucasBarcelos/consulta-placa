@@ -22,13 +22,26 @@ class ModelosFipeVC: UIViewController {
     var modelCodeSelected = 0
     var alert: AlertController?
     let reachability = try! Reachability()
-
+    
+    // Search Bar
+    var filteredModels: VehicleModelsModel?
+    private let searchController = UISearchController(searchResultsController: nil)
+    private var searchBarIsEmpty: Bool {
+        guard let text = searchController.searchBar.text else { return false }
+        return text.isEmpty
+    }
+    
+    private var isFiltering: Bool {
+        return searchController.isActive && !searchBarIsEmpty
+    }
+    
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.anoModeloFipeViewModel.delegate = self
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        configureSearch()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,6 +74,17 @@ class ModelosFipeVC: UIViewController {
     }
     
     // MARK: - Methods
+    private func configureSearch() {
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Pesquise um modelo..."
+        searchController.searchBar.barTintColor = .white
+        
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        definesPresentationContext = true
+    }
+    
     @objc func reachabilityChanged(note: Notification) {
         let reachability = note.object as! Reachability
         
@@ -85,7 +109,10 @@ class ModelosFipeVC: UIViewController {
 extension ModelosFipeVC: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return self.models?.modelos.count ?? 0
+        guard let filteredModel = filteredModels?.modelos,
+              let model = models?.modelos else { return 0 }
+        
+        return isFiltering ? filteredModel.count : model.count
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -96,7 +123,9 @@ extension ModelosFipeVC: UITableViewDelegate, UITableViewDataSource {
 
         let cell:TabelaFipeGenericCell? = tableView.dequeueReusableCell(withIdentifier: TabelaFipeGenericCell.identifier, for: indexPath) as? TabelaFipeGenericCell
         
-        if let model = models {
+        let filteredModel = isFiltering ? filteredModels : models
+        
+        if let model = filteredModel {
             cell?.setupCellVehicleModels(data: model, index: indexPath.section)
         }
         cell?.selectionStyle = .none
@@ -119,7 +148,11 @@ extension ModelosFipeVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let model = models?.modelos[indexPath.section] else { return }
+        
+        let modelFiltered = isFiltering ? filteredModels?.modelos[indexPath.section] : models?.modelos[indexPath.section]
+        
+        guard let model = modelFiltered else { return }
+        
         self.modelCodeSelected = model.value
         DispatchQueue.main.async {
             AnimationLoading.start()
@@ -144,3 +177,18 @@ extension ModelosFipeVC: AnoModeloFipeViewModelProtocol {
     }
 }
 
+// MARK: - Extension - Search Results Updating
+extension ModelosFipeVC: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchController.searchBar.text ?? "")
+    }
+    
+    private func filterContentForSearchText(_ searchText: String) {
+        if let modelos = models?.modelos {
+            filteredModels?.modelos = modelos.filter { character in
+                character.label.lowercased().contains(searchText.lowercased())
+            }
+        }
+        tableView.reloadData()
+    }
+}
