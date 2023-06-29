@@ -365,6 +365,7 @@
                         <outlet property="modelLabel" destination="XAi-Ug-cJP" id="HLu-Bx-vlz"/>
                         <outlet property="plateImage" destination="d1d-UQ-Tb0" id="ah1-U2-A1L"/>
                         <outlet property="plateLabel" destination="H4h-Xe-kdZ" id="Elx-3B-aqT"/>
+                        <outlet property="scrollView" destination="UtI-ps-Rfq" id="jbl-Pz-Yvb"/>
                         <outlet property="shareButton" destination="ahu-h2-bkf" id="Y7c-ge-x3h"/>
                         <outlet property="situationView" destination="J1a-Hx-Bez" id="Pvf-Uz-x6P"/>
                         <outlet property="situationlabel" destination="4px-YJ-Dk4" id="Bzd-MT-FGd"/>

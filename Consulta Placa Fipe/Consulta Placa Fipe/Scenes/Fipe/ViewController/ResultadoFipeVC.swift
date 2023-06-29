@@ -27,6 +27,18 @@ class ResultadoFipeVC: UIViewController {
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        DispatchQueue.main.async {
+            if GoogleAdsManager.successCounter >= 2 {
+                if let interstitial = GoogleAdsManager.shared.interstitial {
+                    GoogleAdsManager.successCounter = 0
+                    interstitial.present(fromRootViewController: self)
+                    print("Anúncio FIPE - intersticial exibido com sucesso!")
+                } else {
+                    print("Anúncio FIPE - intersticial não está pronto ainda.")
+                }
+            }
+        }
 
         guard let resultado = resultFipe else { return }
         self.brandLabel.attributedText = NSMutableAttributedString().bold("Marca: ").normal("\(resultado.Marca)")
@@ -46,17 +58,36 @@ class ResultadoFipeVC: UIViewController {
     }
     
     @IBAction func shareButton(_ sender: UIBarButtonItem) {
-        // Screenshot:
-        UIGraphicsBeginImageContextWithOptions(self.view.frame.size, true, 0.0)
-        self.view.drawHierarchy(in: self.view.frame, afterScreenUpdates: false)
-        let img = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
+
+        let startPoint = CGPoint(x: brandLabel.frame.origin.x, y: brandLabel.frame.origin.y - 20)
+        let endPoint = CGPoint(x: dateQueryLabel.frame.maxX, y: dateQueryLabel.frame.maxY + 20)
         
-        //Set the link, message, image to share.
-        if let img = img {
-            let objectsToShare = [img] as [Any]
-            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-            self.present(activityVC, animated: true, completion: nil)
+        // Determine as dimensões do print com base nas posições das labels
+        let printWidth = endPoint.x - startPoint.x
+        let printHeight = endPoint.y - startPoint.y
+        
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: printWidth, height: printHeight), false, 0.0)
+        
+        if let context = UIGraphicsGetCurrentContext() {
+            // Translate o contexto para a posição correta da primeira label
+            context.translateBy(x: -startPoint.x, y: -startPoint.y)
+            
+            // Renderize a view hierarquia no contexto
+            view.layer.render(in: context)
+            
+            // Capture a imagem renderizada
+            let capturedImage = UIGraphicsGetImageFromCurrentImageContext()
+            
+            UIGraphicsEndImageContext()
+            
+            // Salve ou utilize a imagem capturada conforme necessário
+            if let image = capturedImage {
+                if let img = capturedImage {
+                    let objectsToShare = [img] as [Any]
+                    let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+                    self.present(activityVC, animated: true, completion: nil)
+                }
+            }
         }
     }
 }

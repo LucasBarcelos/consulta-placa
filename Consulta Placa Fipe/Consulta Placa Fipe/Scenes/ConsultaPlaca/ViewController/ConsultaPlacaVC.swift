@@ -31,6 +31,7 @@ class ConsultaPlacaVC: UIViewController {
         self.consultaPlacaViewModel.delegate(delegate: self)
         self.plateTextField.delegate = self
         configPlateTextField()
+        connectionLabel.isHidden = true
         
         print("UserDefault - Mês: \(UserDefaults.standard.getMonthReference())")
         print("UserDefault - Código: \(UserDefaults.standard.getCodeReference())")
@@ -237,7 +238,7 @@ extension ConsultaPlacaVC: ConsultaPlacaViewModelProtocol {
     func erroFetch(message: String) {
         DispatchQueue.main.async {
             AnimationLoading.stop()
-            self.alert?.alertInformation(title: "Atenção", message: message)
+            self.alert?.alertInformation(title: "Atenção", message: "Estamos enfrentando uma indisponibilidade do serviço no momento, por favor, tente novamente em alguns instantes!")
         }
     }
 }

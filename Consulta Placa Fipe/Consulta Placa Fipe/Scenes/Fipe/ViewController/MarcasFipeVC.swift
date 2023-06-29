@@ -53,6 +53,7 @@ class MarcasFipeVC: UIViewController {
         }catch{
             print("could not start reachability notifier")
         }
+        GoogleAdsManager.shared.loadInterstitialAd()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -167,7 +168,7 @@ extension MarcasFipeVC: MarcasFipeViewModelProtocol {
     func erroFetch(message: String) {
         DispatchQueue.main.async {
             AnimationLoading.stop()
-            self.alert?.alertInformation(title: "Atenção", message: message)
+            self.alert?.alertInformation(title: "Atenção", message: "Estamos enfrentando uma indisponibilidade do serviço no momento, por favor, tente novamente em alguns instantes!")
         }
     }
 }

@@ -11,6 +11,7 @@ import GoogleMobileAds
 class ResultadoConsultaPlacaVC: UIViewController {
     
     // Outlets
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var situationlabel: UILabel?
     @IBOutlet weak var situationView: UIView?
     @IBOutlet weak var plateImage: UIImageView?
@@ -42,9 +43,9 @@ class ResultadoConsultaPlacaVC: UIViewController {
                 if let interstitial = GoogleAdsManager.shared.interstitial {
                     GoogleAdsManager.successCounter = 0
                     interstitial.present(fromRootViewController: self)
-                    print("Anúncio intersticial exibido com sucesso!")
+                    print("Anúncio PLACA - intersticial exibido com sucesso!")
                 } else {
-                    print("Anúncio intersticial não está pronto ainda.")
+                    print("Anúncio PLACA - intersticial não está pronto ainda.")
                 }
             }
         }
@@ -90,27 +91,31 @@ class ResultadoConsultaPlacaVC: UIViewController {
     }
     
     @IBAction func shareButton(_ sender: UIBarButtonItem) {
-        // Screenshot:
-        switch UIDevice().screenType {
-        case .small:
-            UIGraphicsBeginImageContextWithOptions(CGSize(width: self.view.bounds.width, height: 480.0), true, 0.0)
-            self.view.drawHierarchy(in: CGRectMake(0, -60, view.bounds.size.width, view.bounds.size.height), afterScreenUpdates: true)
-        case .medium:
-            UIGraphicsBeginImageContextWithOptions(CGSize(width: self.view.bounds.width, height: 520.0), true, 0.0)
-            self.view.drawHierarchy(in: CGRectMake(0, -80, view.bounds.size.width, view.bounds.size.height), afterScreenUpdates: true)
-        case .large:
-            UIGraphicsBeginImageContextWithOptions(CGSize(width: self.view.bounds.width, height: 520.0), true, 0.0)
-            self.view.drawHierarchy(in: CGRectMake(0, -80, view.bounds.size.width, view.bounds.size.height), afterScreenUpdates: true)
-        }
+        guard let scrollView = scrollView,
+              let contentView = scrollView.subviews.first,
+              let startFrame = situationlabel?.frame,
+              let endFrame = dateLabel?.frame else { return }
         
-        let img = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
+        let startPoint = CGPoint(x: 0, y: contentView.frame.origin.y + startFrame.origin.y)
+        let endPoint = CGPoint(x: scrollView.frame.size.width, y: contentView.frame.origin.y + endFrame.maxY + 20)
         
-        //Set the link, message, image to share.
-        if let img = img {
-            let objectsToShare = [img] as [Any]
-            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-            self.present(activityVC, animated: true, completion: nil)
+        let printWidth = scrollView.frame.size.width
+        let printHeight = endPoint.y - startPoint.y
+        
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: printWidth, height: printHeight), false, 0.0)
+        
+        if let context = UIGraphicsGetCurrentContext() {
+            context.translateBy(x: -startPoint.x, y: -startPoint.y)
+            contentView.layer.render(in: context)
+            
+            let capturedImage = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            
+            if let image = capturedImage {
+                let objectsToShare = [image] as [Any]
+                let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+                self.present(activityVC, animated: true, completion: nil)
+            }
         }
     }
 }
