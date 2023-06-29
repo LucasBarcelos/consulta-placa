@@ -91,7 +91,7 @@ public class AnimationLoading: UIView {
     
     // MARK: - Methods
     @objc func onAppTimeout(notification: NSNotification) {
-        self.close()
+        self.closeTimeOut()
     }
     
     public func open() {
@@ -117,6 +117,30 @@ public class AnimationLoading: UIView {
         transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
         super.superview?.layer.add(transition, forKey: CATransitionType.fade.rawValue)
         self.removeFromSuperview()
+    }
+    
+    public func closeTimeOut() {
+        stopScheduledTimeoutVerify()
+        
+        self.loadingStatus = .stopped
+        self.activity.stop()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            let transition = CATransition()
+            transition.duration = 0.3
+            transition.type = CATransitionType.fade
+            transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
+            super.superview?.layer.add(transition, forKey: CATransitionType.fade.rawValue)
+            self.removeFromSuperview()
+            
+            let alertController = UIAlertController(title: "Atenção", message: "Estamos enfrentando uma indisponibilidade do serviço no momento, por favor, tente novamente em alguns instantes!", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            
+            if let presenterView = self.presenterView {
+                presenterView.window?.rootViewController?.present(alertController, animated: true, completion: nil)
+            } else {
+                UIApplication.shared.keyWindow?.rootViewController?.present(alertController, animated: true, completion: nil)
+            }
+        }
     }
     
     public static func status() -> LoadingStatus {

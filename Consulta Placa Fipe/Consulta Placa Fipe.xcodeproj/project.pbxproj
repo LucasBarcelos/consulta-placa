@@ -740,6 +740,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Consulta Placa Fipe/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Placa e FIPE";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Precisamos da sua permissão para salvar imagens das consultas em sua galeria";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Precisamos da sua permissão para salvar imagens das consultas em sua galeria";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -778,6 +780,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Consulta Placa Fipe/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Placa e FIPE";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Precisamos da sua permissão para salvar imagens das consultas em sua galeria";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Precisamos da sua permissão para salvar imagens das consultas em sua galeria";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
