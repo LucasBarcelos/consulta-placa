@@ -24,4 +24,26 @@ struct ConsultaPlacaModel: Codable {
     var placa_alternativa:String
     var situacao:String
     var uf:String
+    var fipe:FipePlacaModel?
+    var extra:Extra
+}
+
+
+struct FipePlacaModel: Codable {
+    var dados:[DadosFipePlaca]
+}
+
+struct Extra: Codable {
+    var combustivel:String
+}
+
+struct DadosFipePlaca: Codable {
+    let ano_modelo: String
+    let codigo_fipe: String
+    let combustivel: String
+    let mes_referencia: String
+    let score: Int
+    let texto_marca: String
+    let texto_modelo: String
+    let texto_valor: String
 }

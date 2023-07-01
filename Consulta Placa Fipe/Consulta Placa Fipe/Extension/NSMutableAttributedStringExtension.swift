@@ -47,4 +47,21 @@ extension NSMutableAttributedString {
             return UIFont.boldSystemFont(ofSize: 20)
         }
     }
+    
+    // Custom
+    func boldCustom(_ value:String) -> NSMutableAttributedString {
+        
+        let attributes:[NSAttributedString.Key : Any] = [.font : UIFont.boldSystemFont(ofSize: 14)]
+    
+        self.append(NSAttributedString(string: value, attributes:attributes))
+        return self
+    }
+    
+    func normalCustom(_ value:String) -> NSMutableAttributedString {
+        
+        let attributes:[NSAttributedString.Key : Any] = [.font : UIFont.systemFont(ofSize: 14)]
+        
+        self.append(NSAttributedString(string: value, attributes:attributes))
+        return self
+    }
 }

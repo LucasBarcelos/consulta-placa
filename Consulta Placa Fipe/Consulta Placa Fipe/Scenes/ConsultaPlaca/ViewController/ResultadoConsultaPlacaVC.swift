@@ -25,10 +25,21 @@ class ResultadoConsultaPlacaVC: UIViewController {
     @IBOutlet weak var dateLabel: UILabel?
     @IBOutlet weak var shareButton: UIBarButtonItem!
     
+    // Outlet - FIPE
+    @IBOutlet weak var fipeMarcaLabel: UILabel!
+    @IBOutlet weak var fipeModeloLabel: UILabel!
+    @IBOutlet weak var fipeAnoLabel: UILabel!
+    @IBOutlet weak var fipeCombustivelLabel: UILabel!
+    @IBOutlet weak var fipeReferenciaLabel: UILabel!
+    @IBOutlet weak var fipeCodigoLabel: UILabel!
+    @IBOutlet weak var fipeValorLabel: UILabel!
+    @IBOutlet weak var infoFipeView: UIView!
+    
     // Properties
     var consultaPlacaResultado: ConsultaPlacaModel?
     var plateIsMercosul = false
     var plateTyped = ""
+    var containFipe = false
     
     // MARK: View Life Cycle
     override func viewDidLoad() {
@@ -65,6 +76,36 @@ class ResultadoConsultaPlacaVC: UIViewController {
         self.colorLabel?.attributedText = NSMutableAttributedString().bold("Cor: ").normal("\(carro.cor)")
         self.countyLabel?.attributedText = NSMutableAttributedString().bold("Cidade: ").normal("\(carro.municipio) - \(carro.uf)")
         self.dateLabel?.attributedText = NSMutableAttributedString().bold("Data da consulta: ").normal("\(carro.data)")
+        
+        // FIPE View
+        if carro.fipe?.dados.count == 0 {
+            self.infoFipeView.heightAnchor.constraint(equalToConstant: 0).isActive = true
+            self.containFipe = false
+        } else {
+            guard let fipe = carro.fipe?.dados[0] else {
+                self.infoFipeView.heightAnchor.constraint(equalToConstant: 0).isActive = true
+                self.containFipe = false
+                return
+            }
+            
+            self.containFipe = true
+            
+            self.fipeMarcaLabel.attributedText = NSMutableAttributedString().boldCustom("Marca: ").normalCustom("\(fipe.texto_marca)")
+            self.fipeModeloLabel.attributedText = NSMutableAttributedString().boldCustom("Modelo: ").normalCustom("\(fipe.texto_modelo)")
+            self.fipeAnoLabel.attributedText = NSMutableAttributedString().boldCustom("Ano: ").normalCustom("\(fipe.ano_modelo)")
+            self.fipeCombustivelLabel.attributedText = NSMutableAttributedString().boldCustom("Combustível: ").normalCustom("\(fipe.combustivel)")
+            self.fipeReferenciaLabel.attributedText = NSMutableAttributedString().boldCustom("Referência: ").normalCustom("\(fipe.mes_referencia)")
+            self.fipeCodigoLabel.attributedText = NSMutableAttributedString().boldCustom("Codigo: ").normalCustom("\(fipe.codigo_fipe)")
+            self.fipeValorLabel.text = "\(fipe.texto_valor)"
+            
+            infoFipeView.clipsToBounds = true
+            infoFipeView.layer.cornerRadius = 10
+            infoFipeView.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.15).cgColor
+            infoFipeView.layer.shadowRadius = 4
+            infoFipeView.layer.shadowOffset = CGSize(width: 4, height: 6)
+            infoFipeView.layer.shadowOpacity = 0.30
+            infoFipeView.layer.masksToBounds = false
+        }
     }
     
     func validatePlateImage() {
@@ -94,14 +135,23 @@ class ResultadoConsultaPlacaVC: UIViewController {
         guard let scrollView = scrollView,
               let contentView = scrollView.subviews.first,
               let startFrame = situationlabel?.frame,
-              let endFrame = dateLabel?.frame else { return }
+              let endFrameWithoutFipe = dateLabel?.frame,
+              let endFrameWithFipe = infoFipeView?.frame else { return }
+        
+        var endPoint = CGPoint()
+        var printHeight: CGFloat = 0.0
         
         let startPoint = CGPoint(x: 0, y: contentView.frame.origin.y + startFrame.origin.y)
-        let endPoint = CGPoint(x: scrollView.frame.size.width, y: contentView.frame.origin.y + endFrame.maxY + 20)
-        
         let printWidth = scrollView.frame.size.width
-        let printHeight = endPoint.y - startPoint.y
         
+        if self.containFipe {
+            endPoint = CGPoint(x: scrollView.frame.size.width, y: contentView.frame.origin.y + endFrameWithFipe.maxY + 20)
+            printHeight = endPoint.y - startPoint.y
+        } else {
+            endPoint = CGPoint(x: scrollView.frame.size.width, y: contentView.frame.origin.y + endFrameWithoutFipe.maxY + 20)
+            printHeight = endPoint.y - startPoint.y
+        }
+         
         UIGraphicsBeginImageContextWithOptions(CGSize(width: printWidth, height: printHeight), false, 0.0)
         
         if let context = UIGraphicsGetCurrentContext() {

@@ -28,7 +28,24 @@ class ConsultaPlacaViewModel: ConsultaPlacaServiceAPIProtocol {
     }
     
     func success(plate: ConsultaPlacaModel) {
-        self.delegate?.successGoToResult(result: plate)
+        var result = plate
+        guard var dadosFipe = plate.fipe?.dados else { return }
+            
+        // Filtrar os itens com o maior score
+        let maxScore = dadosFipe.max(by: { $0.score < $1.score })?.score ?? 0
+        dadosFipe = dadosFipe.filter { $0.score == maxScore }
+        
+        // Verificar se há itens com o mesmo score e filtrar com base no combustível
+        if dadosFipe.count > 1 {
+            let combustivel = plate.extra.combustivel
+            dadosFipe = dadosFipe.filter { $0.combustivel == combustivel }
+        }
+        
+        // Atualizar a lista no objeto plate
+        result.fipe?.dados = dadosFipe
+        
+        // Chamar o delegate com o resultado final
+        self.delegate?.successGoToResult(result: result)
     }
     
     func error(error: Error) {
