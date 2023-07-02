@@ -10,6 +10,7 @@ import Foundation
 enum UserDefaultsKeys : String {
     case month
     case code
+    case historic
 }
 
 extension UserDefaults {
@@ -22,6 +23,13 @@ extension UserDefaults {
         set(value, forKey: UserDefaultsKeys.code.rawValue)
     }
     
+    func setHistoricReference(value: [ReferenceMonthModel]) {
+        let encoder = JSONEncoder()
+        if let encodedData = try? encoder.encode(value) {
+            set(encodedData, forKey: UserDefaultsKeys.historic.rawValue)
+        }
+    }
+    
     func getMonthReference() -> String {
         return string(forKey: UserDefaultsKeys.month.rawValue) ?? ""
     }
@@ -30,4 +38,13 @@ extension UserDefaults {
         return integer(forKey: UserDefaultsKeys.code.rawValue)
     }
     
+    func getHistoricReference() -> [ReferenceMonthModel] {
+        if let data = data(forKey: UserDefaultsKeys.historic.rawValue) {
+            let decoder = JSONDecoder()
+            if let historic = try? decoder.decode([ReferenceMonthModel].self, from: data) {
+                return historic
+            }
+        }
+        return []
+    }
 }

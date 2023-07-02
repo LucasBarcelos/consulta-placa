@@ -24,6 +24,7 @@ class FipeReferenceMonthAPI {
                     let json = try JSONDecoder().decode([ReferenceMonthModel].self, from: data)
                     UserDefaults.standard.setMonthReference(value: json.first?.Mes ?? "")
                     UserDefaults.standard.setCodeReference(value: json.first?.Codigo ?? 0)
+                    UserDefaults.standard.setHistoricReference(value: json)
                 } catch {
                     print("Error ao carregar mês de referência")
                 }

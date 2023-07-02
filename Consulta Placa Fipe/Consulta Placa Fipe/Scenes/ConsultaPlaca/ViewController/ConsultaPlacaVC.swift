@@ -33,8 +33,8 @@ class ConsultaPlacaVC: UIViewController {
         configPlateTextField()
         connectionLabel.isHidden = true
         
-        print("UserDefault - Mês: \(UserDefaults.standard.getMonthReference())")
-        print("UserDefault - Código: \(UserDefaults.standard.getCodeReference())")
+        print("UserDefault FIPE - Mês Atual: \(UserDefaults.standard.getMonthReference())")
+        print("UserDefault FIPE - Código Atual: \(UserDefaults.standard.getCodeReference())")
         configButtonEnable(false)
         
         verifyScreenSizeToNotification()

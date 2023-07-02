@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol CompleteFipeViewModelProtocol: AnyObject {
-    func successGoToResult(result: CompleteFipeModel?)
+    func successGoToResult(result: [CompleteFipeModel]?)
     func erroFetch(message: String)
 }
 
@@ -27,7 +27,7 @@ class CompleteFipeViewModel: FipeCompleteAPIProtocol {
         self.delegate = delegate
     }
     
-    func success(result: CompleteFipeModel) {
+    func success(result: [CompleteFipeModel]) {
         self.delegate?.successGoToResult(result: result)
     }
     

@@ -21,8 +21,11 @@ class ResultadoFipeVC: UIViewController {
     @IBOutlet weak var newQueryButton: UIButton!
     @IBOutlet weak var shareButton: UIBarButtonItem!
     
+    //Chart
+    @IBOutlet weak var chartView: UIView!
+    
     // MARK: - Properties
-    var resultFipe: CompleteFipeModel?
+    var resultFipe: [CompleteFipeModel]?
     
     // MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -39,18 +42,40 @@ class ResultadoFipeVC: UIViewController {
                 }
             }
         }
-
-        guard let resultado = resultFipe else { return }
-        self.brandLabel.attributedText = NSMutableAttributedString().bold("Marca: ").normal("\(resultado.Marca)")
-        self.modelLabel.attributedText = NSMutableAttributedString().bold("Modelo: ").normal("\(resultado.Modelo)")
-        self.yearLabel.attributedText = NSMutableAttributedString().bold("Ano/Modelo: ").normal("\(resultado.AnoModelo)")
-        self.fuelLabel.attributedText = NSMutableAttributedString().bold("Combustível: ").normal("\(resultado.Combustivel)")
-        self.fipeCodeLabel.attributedText = NSMutableAttributedString().bold("Código FIPE: ").normal("\(resultado.CodigoFipe)")
-        self.refereceMonthLabel.attributedText = NSMutableAttributedString().bold("Mês de Referência: ").normal("\(resultado.MesReferencia)")
-        self.dateQueryLabel.attributedText = NSMutableAttributedString().bold(resultado.DataConsulta)
-        self.priceLabel.text = resultado.Valor
+        
+        setupFipe()
     }
     
+    // MARK: - Methods
+    func setupFipe() {
+        guard let resultado = resultFipe else { return }
+        let mesAtual = UserDefaults.standard.getMonthReference()
+        let dateFormat = "MMMM/yyyy"  // Define o formato esperado das datas
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "pt_BR")  // Define o local para "pt_BR" para tratar o mês em português
+        dateFormatter.dateFormat = dateFormat
+        
+        for item in resultado {
+            let dataA = item.MesReferencia.replacingOccurrences(of: "de", with: "").replacingOccurrences(of: " ", with: "")
+            let dataB = mesAtual.replacingOccurrences(of: "/", with: "").replacingOccurrences(of: " ", with: "")
+                
+            if dataA == dataB {
+                print("As variáveis representam o mesmo mês e ano.")
+                self.brandLabel.attributedText = NSMutableAttributedString().bold("Marca: ").normal("\(item.Marca)")
+                self.modelLabel.attributedText = NSMutableAttributedString().bold("Modelo: ").normal("\(item.Modelo)")
+                self.yearLabel.attributedText = NSMutableAttributedString().bold("Ano/Modelo: ").normal("\(item.AnoModelo)")
+                self.fuelLabel.attributedText = NSMutableAttributedString().bold("Combustível: ").normal("\(item.Combustivel)")
+                self.fipeCodeLabel.attributedText = NSMutableAttributedString().bold("Código FIPE: ").normal("\(item.CodigoFipe)")
+                self.refereceMonthLabel.attributedText = NSMutableAttributedString().bold("Mês de Referência: ").normal("\(item.MesReferencia)")
+                self.dateQueryLabel.attributedText = NSMutableAttributedString().bold(item.DataConsulta)
+                self.priceLabel.text = item.Valor
+                return
+            } else {
+                print("As variáveis representam meses e/ou anos diferentes.")
+            }
+        }
+    }
 
     // MARK: - Actions
     @IBAction func newQueryButton(_ sender: UIButton) {

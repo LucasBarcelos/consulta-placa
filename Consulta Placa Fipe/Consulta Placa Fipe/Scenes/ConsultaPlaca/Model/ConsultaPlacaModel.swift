@@ -25,7 +25,7 @@ struct ConsultaPlacaModel: Codable {
     var situacao:String
     var uf:String
     var fipe:FipePlacaModel?
-    var extra:Extra
+    var extra:Extra?
 }
 
 
