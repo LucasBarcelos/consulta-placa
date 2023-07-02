@@ -30,19 +30,15 @@ class ConsultaPlacaViewModel: ConsultaPlacaServiceAPIProtocol {
     func success(plate: ConsultaPlacaModel) {
         var result = plate
         guard var dadosFipe = plate.fipe?.dados else { return }
-            
-        // Filtrar os itens com o maior score
-        let maxScore = dadosFipe.max(by: { $0.score < $1.score })?.score ?? 0
-        dadosFipe = dadosFipe.filter { $0.score == maxScore }
         
-        // Verificar se há itens com o mesmo score e filtrar com base no combustível
-        if dadosFipe.count > 1 {
-            let combustivel = plate.extra.combustivel
-            dadosFipe = dadosFipe.filter { $0.combustivel == combustivel }
-        }
+        // Ordenar os itens em ordem decrescente de score
+        dadosFipe.sort(by: { $0.score > $1.score })
         
+        // Filtrar os cinco primeiros itens com maior score
+        let topThreeItems = Array(dadosFipe.prefix(5))
+               
         // Atualizar a lista no objeto plate
-        result.fipe?.dados = dadosFipe
+        result.fipe?.dados = topThreeItems
         
         // Chamar o delegate com o resultado final
         self.delegate?.successGoToResult(result: result)

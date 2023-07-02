@@ -26,20 +26,16 @@ class ResultadoConsultaPlacaVC: UIViewController {
     @IBOutlet weak var shareButton: UIBarButtonItem!
     
     // Outlet - FIPE
-    @IBOutlet weak var fipeMarcaLabel: UILabel!
-    @IBOutlet weak var fipeModeloLabel: UILabel!
-    @IBOutlet weak var fipeAnoLabel: UILabel!
-    @IBOutlet weak var fipeCombustivelLabel: UILabel!
-    @IBOutlet weak var fipeReferenciaLabel: UILabel!
-    @IBOutlet weak var fipeCodigoLabel: UILabel!
-    @IBOutlet weak var fipeValorLabel: UILabel!
-    @IBOutlet weak var infoFipeView: UIView!
+    @IBOutlet weak var infoFipeCollectionView: UICollectionView!
+    @IBOutlet weak var pageControl: UIPageControl!
     
     // Properties
     var consultaPlacaResultado: ConsultaPlacaModel?
     var plateIsMercosul = false
     var plateTyped = ""
     var containFipe = false
+    let cellPercentWidth: CGFloat = 0.8
+    var centeredCollectionViewFlowLayout: CenteredCollectionViewFlowLayout!
     
     // MARK: View Life Cycle
     override func viewDidLoad() {
@@ -47,8 +43,14 @@ class ResultadoConsultaPlacaVC: UIViewController {
         validatePlateImage()
         validateSituationMessage()
         setupData()
+        
+        // Delegates
+        infoFipeCollectionView.delegate = self
+        infoFipeCollectionView.dataSource = self
+        
         self.navigationItem.hidesBackButton = true
         
+        //Google Ads Mobile
         DispatchQueue.main.async {
             if GoogleAdsManager.successCounter >= 2 {
                 if let interstitial = GoogleAdsManager.shared.interstitial {
@@ -60,10 +62,29 @@ class ResultadoConsultaPlacaVC: UIViewController {
                 }
             }
         }
-        
     }
     
     // MARK: - Methods
+    func setupCollectionView() {
+        // Configurar o Page Control
+        pageControl.numberOfPages = consultaPlacaResultado?.fipe?.dados.count ?? 0
+        
+        // Get the reference to the CenteredCollectionViewFlowLayout (REQURED)
+        centeredCollectionViewFlowLayout = (infoFipeCollectionView.collectionViewLayout as! CenteredCollectionViewFlowLayout)
+
+        // Modify the collectionView's decelerationRate (REQURED)
+        infoFipeCollectionView.decelerationRate = UIScrollView.DecelerationRate.fast
+
+        // Configure the required item size (REQURED)
+        centeredCollectionViewFlowLayout.itemSize = CGSize(
+            width: view.bounds.width * cellPercentWidth,
+            height: 230
+        )
+
+        // Configure the optional inter item spacing (OPTIONAL)
+        centeredCollectionViewFlowLayout.minimumLineSpacing = 16
+    }
+    
     func setupData() {
         guard let carro = consultaPlacaResultado else { return }
         self.plateLabel?.text = plateTyped
@@ -79,32 +100,13 @@ class ResultadoConsultaPlacaVC: UIViewController {
         
         // FIPE View
         if carro.fipe?.dados.count == 0 {
-            self.infoFipeView.heightAnchor.constraint(equalToConstant: 0).isActive = true
+            self.infoFipeCollectionView.heightAnchor.constraint(equalToConstant: 0).isActive = true
+            self.pageControl.heightAnchor.constraint(equalToConstant: 0).isActive = true
+            self.pageControl.isHidden = true
             self.containFipe = false
         } else {
-            guard let fipe = carro.fipe?.dados[0] else {
-                self.infoFipeView.heightAnchor.constraint(equalToConstant: 0).isActive = true
-                self.containFipe = false
-                return
-            }
-            
             self.containFipe = true
-            
-            self.fipeMarcaLabel.attributedText = NSMutableAttributedString().boldCustom("Marca: ").normalCustom("\(fipe.texto_marca)")
-            self.fipeModeloLabel.attributedText = NSMutableAttributedString().boldCustom("Modelo: ").normalCustom("\(fipe.texto_modelo)")
-            self.fipeAnoLabel.attributedText = NSMutableAttributedString().boldCustom("Ano: ").normalCustom("\(fipe.ano_modelo)")
-            self.fipeCombustivelLabel.attributedText = NSMutableAttributedString().boldCustom("Combustível: ").normalCustom("\(fipe.combustivel)")
-            self.fipeReferenciaLabel.attributedText = NSMutableAttributedString().boldCustom("Referência: ").normalCustom("\(fipe.mes_referencia)")
-            self.fipeCodigoLabel.attributedText = NSMutableAttributedString().boldCustom("Codigo: ").normalCustom("\(fipe.codigo_fipe)")
-            self.fipeValorLabel.text = "\(fipe.texto_valor)"
-            
-            infoFipeView.clipsToBounds = true
-            infoFipeView.layer.cornerRadius = 10
-            infoFipeView.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.15).cgColor
-            infoFipeView.layer.shadowRadius = 4
-            infoFipeView.layer.shadowOffset = CGSize(width: 4, height: 6)
-            infoFipeView.layer.shadowOpacity = 0.30
-            infoFipeView.layer.masksToBounds = false
+            setupCollectionView()
         }
     }
     
@@ -136,7 +138,7 @@ class ResultadoConsultaPlacaVC: UIViewController {
               let contentView = scrollView.subviews.first,
               let startFrame = situationlabel?.frame,
               let endFrameWithoutFipe = dateLabel?.frame,
-              let endFrameWithFipe = infoFipeView?.frame else { return }
+              let endFrameWithFipe = infoFipeCollectionView?.frame else { return }
         
         var endPoint = CGPoint()
         var printHeight: CGFloat = 0.0
@@ -167,5 +169,38 @@ class ResultadoConsultaPlacaVC: UIViewController {
                 self.present(activityVC, animated: true, completion: nil)
             }
         }
+    }
+}
+
+extension ResultadoConsultaPlacaVC: UICollectionViewDelegate, UICollectionViewDataSource {
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return consultaPlacaResultado?.fipe?.dados.count ?? 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlacaFipeCollectionViewCell", for: indexPath) as! CustomCollectionViewCell
+        
+        guard let item = consultaPlacaResultado?.fipe?.dados[indexPath.row] else { return cell }
+        
+        
+        cell.displayInformations(marca: item.texto_modelo, modelo: item.texto_marca, ano: item.ano_modelo, combustivel: item.combustivel, referencia: item.mes_referencia, codigo: item.codigo_fipe, valor: item.texto_valor)
+        
+        return cell
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+
+        guard let index = centeredCollectionViewFlowLayout.currentCenteredPage else { return }
+        
+        print("Current centered index: \(index)")
+        
+        self.pageControl.currentPage = index
+    }
+    
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        guard let index = centeredCollectionViewFlowLayout.currentCenteredPage else { return }
+        
+        print("Current centered index: \(index)")
     }
 }
