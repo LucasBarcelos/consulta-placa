@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Charts
+import DGCharts
 
 class ResultadoFipeVC: UIViewController {
     
@@ -22,10 +24,14 @@ class ResultadoFipeVC: UIViewController {
     @IBOutlet weak var shareButton: UIBarButtonItem!
     
     //Chart
-    @IBOutlet weak var chartView: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var viewChart: UIView!
+    @IBOutlet weak var valorMesLabel: UILabel!
     
     // MARK: - Properties
     var resultFipe: [CompleteFipeModel]?
+    var listaResumida: [FipeResumidaModel] = []
+    let formatter = NumberFormatter()
     
     // MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -44,6 +50,12 @@ class ResultadoFipeVC: UIViewController {
         }
         
         setupFipe()
+        setupViewChart()
+        setupChart()
+        
+        // Exibir o valor e o mês concatenados na nova label
+        formatter.numberStyle = .currency
+        formatter.locale = Locale(identifier: "pt_BR")
     }
     
     // MARK: - Methods
@@ -76,6 +88,131 @@ class ResultadoFipeVC: UIViewController {
             }
         }
     }
+    
+    func setupViewChart() {
+        self.viewChart.clipsToBounds = true
+        self.viewChart.layer.cornerRadius = 10
+        self.viewChart.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.15).cgColor
+        self.viewChart.layer.shadowRadius = 4
+        self.viewChart.layer.shadowOffset = CGSize(width: 2, height: 4)
+        self.viewChart.layer.shadowOpacity = 0.30
+        self.viewChart.layer.masksToBounds = false
+    }
+    
+    func setupChart() {
+        let chartWidth: CGFloat = self.viewChart.bounds.width - 30// Largura do gráfico (subtraindo 20 para deixar uma margem)
+        let chartHeight: CGFloat = self.viewChart.bounds.height - 10 // Altura  do gráfico
+        let chartX = (self.viewChart.bounds.width - chartWidth) / 2 // Posição X para centralizar o gráfico horizontalmente dentro da viewChart
+        let chartY = (self.viewChart.bounds.height - chartHeight) / 2 // Posição Y para centralizar o gráfico verticalmente dentro da viewChart
+
+        let chartView = LineChartView(frame: CGRect(x: chartX, y: chartY, width: chartWidth, height: chartHeight))
+        
+        // Criando lista de valores já em Double
+        guard let resultado = resultFipe else { return }
+        
+        // Percorra os itens da lista original
+        for item in resultado {
+            let valorString = item.Valor
+            let mesReferenciaString = item.MesReferencia
+            
+            // Remova o prefixo "R$ " e o separador de milhares "."
+            let valorCleaned = valorString.replacingOccurrences(of: "R$ ", with: "").replacingOccurrences(of: ".", with: "")
+            
+            // Remova a vírgula decimal e converta para Double
+            if let valor = Double(valorCleaned.replacingOccurrences(of: ",", with: ".")) {
+                // Formate o MesReferencia
+                let mesReferenciaFormatted = formatMesReferencia(mesReferenciaString).replacingOccurrences(of: ".", with: "")
+                
+                // Adicione o item à lista resumida
+                let carItem = FipeResumidaModel(valor: valor, mesReferencia: mesReferenciaFormatted)
+                listaResumida.append(carItem)
+            }
+        }
+        
+        listaResumida = sortDataByMonth(data: listaResumida)
+        
+        var dataEntries: [ChartDataEntry] = []
+
+        for (index, model) in listaResumida.enumerated() {
+            let xValue = Double(index)
+            let yValue = model.valor
+            let dataEntry = ChartDataEntry(x: xValue, y: yValue)
+            dataEntries.append(dataEntry)
+        }
+        
+        let dataSet = LineChartDataSet(entries: dataEntries, label: "")
+        dataSet.colors = [NSUIColor.cpSecondaryMain]
+        dataSet.lineWidth = 2
+        dataSet.circleRadius = 6
+        dataSet.circleHoleRadius = 4
+        dataSet.drawCircleHoleEnabled = true
+        dataSet.drawIconsEnabled = false
+        dataSet.circleColors = [NSUIColor.cpPrimaryMain]
+        dataSet.valueFormatter = DefaultValueFormatter(formatter: formatter)
+        dataSet.drawValuesEnabled = false
+        
+        let xAxis = chartView.xAxis
+        xAxis.labelPosition = .bottom
+        xAxis.drawGridLinesEnabled = true
+
+        let months = listaResumida.map { $0.mesReferencia }
+
+        xAxis.valueFormatter = IndexAxisValueFormatter(values: months)
+        xAxis.labelCount = months.count
+        xAxis.granularity = 1
+        xAxis.granularityEnabled = true
+        xAxis.setLabelCount(months.count, force: true)
+        xAxis.labelRotationAngle = -45
+
+        let lineChartData = LineChartData(dataSet: dataSet)
+        chartView.data = lineChartData
+        chartView.scaleXEnabled = false
+        chartView.scaleYEnabled = false
+        chartView.legend.form = .none
+        chartView.delegate = self
+        chartView.leftAxis.enabled = true
+        
+        let leftAxis = chartView.leftAxis
+        leftAxis.valueFormatter = CurrencyValueFormatter()
+        leftAxis.drawAxisLineEnabled = true // Exibir linha do eixo
+        leftAxis.drawLabelsEnabled = true // Exibir legendas
+        
+        chartView.rightAxis.enabled = false
+        
+        self.viewChart.addSubview(chartView)
+    }
+
+    func formatMesReferencia(_ mesReferencia: String) -> String {
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.locale = Locale(identifier: "pt_BR")
+        dateFormatterGet.dateFormat = "MMMM 'de' yyyy"
+        
+        let dateFormatterPrint = DateFormatter()
+        dateFormatterPrint.locale = Locale(identifier: "pt_BR")
+        dateFormatterPrint.dateFormat = "MMM/yy"
+        
+        if let date = dateFormatterGet.date(from: mesReferencia) {
+            return dateFormatterPrint.string(from: date)
+        } else {
+            return ""
+        }
+    }
+    
+    func sortDataByMonth(data: [FipeResumidaModel]) -> [FipeResumidaModel] {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "pt_BR")
+        dateFormatter.dateFormat = "MMM/yy"
+
+        let sortedData = data.sorted { (item1, item2) -> Bool in
+            if let date1 = dateFormatter.date(from: item1.mesReferencia),
+               let date2 = dateFormatter.date(from: item2.mesReferencia) {
+                return date1 < date2
+            }
+            return false
+        }
+
+        return sortedData
+    }
 
     // MARK: - Actions
     @IBAction func newQueryButton(_ sender: UIButton) {
@@ -84,35 +221,59 @@ class ResultadoFipeVC: UIViewController {
     
     @IBAction func shareButton(_ sender: UIBarButtonItem) {
 
-        let startPoint = CGPoint(x: brandLabel.frame.origin.x, y: brandLabel.frame.origin.y - 20)
-        let endPoint = CGPoint(x: dateQueryLabel.frame.maxX, y: dateQueryLabel.frame.maxY + 20)
+        guard let scrollView = scrollView,
+              let contentView = scrollView.subviews.first,
+              let startFrame = brandLabel?.frame,
+              let endFrame = viewChart?.frame else { return }
         
-        // Determine as dimensões do print com base nas posições das labels
-        let printWidth = endPoint.x - startPoint.x
-        let printHeight = endPoint.y - startPoint.y
+        var endPoint = CGPoint()
+        var printHeight: CGFloat = 0.0
         
+        let startPoint = CGPoint(x: 0, y: contentView.frame.origin.y + startFrame.origin.y - 20)
+        let printWidth = scrollView.frame.size.width
+        
+        endPoint = CGPoint(x: scrollView.frame.size.width, y: contentView.frame.origin.y + endFrame.maxY + 20)
+        printHeight = endPoint.y - startPoint.y
+         
         UIGraphicsBeginImageContextWithOptions(CGSize(width: printWidth, height: printHeight), false, 0.0)
         
         if let context = UIGraphicsGetCurrentContext() {
-            // Translate o contexto para a posição correta da primeira label
             context.translateBy(x: -startPoint.x, y: -startPoint.y)
+            contentView.layer.render(in: context)
             
-            // Renderize a view hierarquia no contexto
-            view.layer.render(in: context)
-            
-            // Capture a imagem renderizada
             let capturedImage = UIGraphicsGetImageFromCurrentImageContext()
-            
             UIGraphicsEndImageContext()
             
-            // Salve ou utilize a imagem capturada conforme necessário
             if let image = capturedImage {
-                if let img = capturedImage {
-                    let objectsToShare = [img] as [Any]
-                    let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-                    self.present(activityVC, animated: true, completion: nil)
-                }
+                let objectsToShare = [image] as [Any]
+                let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+                self.present(activityVC, animated: true, completion: nil)
             }
         }
+    }
+}
+
+extension ResultadoFipeVC: ChartViewDelegate {
+    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
+        let index = Int(entry.x)
+        
+        guard index >= 0 && index < listaResumida.count else {
+            return
+        }
+        
+        let selectedData = listaResumida[index]
+        let month = selectedData.mesReferencia
+        let value = selectedData.valor
+        
+        if let valorFormatado = formatter.string(from: NSNumber(value: value)) {
+            valorMesLabel.text = "\(month) - \(valorFormatado)"
+        } else {
+            valorMesLabel.text = "\(month)"
+        }
+    }
+    
+    func chartValueNothingSelected(_ chartView: ChartViewBase) {
+        // Quando nenhum ponto estiver selecionado
+        valorMesLabel.text = ""
     }
 }

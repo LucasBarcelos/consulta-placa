@@ -17,3 +17,8 @@ struct CompleteFipeModel: Codable {
     var MesReferencia:String
     var DataConsulta:String
 }
+
+struct FipeResumidaModel {
+    let valor: Double
+    let mesReferencia: String
+}

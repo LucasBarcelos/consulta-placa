@@ -70,8 +70,10 @@
 		A2C8CD1229DA6862000196D2 /* ResultadoFipeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C8CD1129DA6862000196D2 /* ResultadoFipeVC.swift */; };
 		A2C8CD1429DA6A92000196D2 /* FipeCompleteAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C8CD1329DA6A92000196D2 /* FipeCompleteAPI.swift */; };
 		A2C8CD1629DA6EFD000196D2 /* CompleteFipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C8CD1529DA6EFD000196D2 /* CompleteFipeViewModel.swift */; };
+		A2D05F7E2A560DB100388E1F /* CurrencyValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D05F7D2A560DB100388E1F /* CurrencyValueFormatter.swift */; };
 		A2F35A142A4FE16F00EB8215 /* UICollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F35A132A4FE16F00EB8215 /* UICollectionViewExtension.swift */; };
 		A2F35A172A51247E00EB8215 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F35A162A51247E00EB8215 /* CustomCollectionViewCell.swift */; };
+		A2F35A202A5366FE00EB8215 /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = A2F35A1F2A5366FE00EB8215 /* DGCharts */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -131,6 +133,7 @@
 		A2C8CD1129DA6862000196D2 /* ResultadoFipeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultadoFipeVC.swift; sourceTree = "<group>"; };
 		A2C8CD1329DA6A92000196D2 /* FipeCompleteAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FipeCompleteAPI.swift; sourceTree = "<group>"; };
 		A2C8CD1529DA6EFD000196D2 /* CompleteFipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteFipeViewModel.swift; sourceTree = "<group>"; };
+		A2D05F7D2A560DB100388E1F /* CurrencyValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyValueFormatter.swift; sourceTree = "<group>"; };
 		A2F35A132A4FE16F00EB8215 /* UICollectionViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtension.swift; sourceTree = "<group>"; };
 		A2F35A162A51247E00EB8215 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -149,6 +152,7 @@
 				A267F5C129E0D8F00006E817 /* FirebaseStorage in Frameworks */,
 				A266D72129E605290093A2F2 /* Reachability in Frameworks */,
 				A267F5BB29E0D8F00006E817 /* FirebaseFirestore in Frameworks */,
+				A2F35A202A5366FE00EB8215 /* DGCharts in Frameworks */,
 				A23026A729CEB21D0016EFAF /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -237,6 +241,7 @@
 				A23026BE29CEB5D60016EFAF /* AnimationLoading.swift */,
 				A2C8CCFD29D9F0D6000196D2 /* UtilsPreference.swift */,
 				A2BC25512A1D6BD400E018F8 /* GoogleAdsManager.swift */,
+				A2D05F7D2A560DB100388E1F /* CurrencyValueFormatter.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -449,6 +454,7 @@
 				A267F5C029E0D8F00006E817 /* FirebaseStorage */,
 				A267F5C329E0E9D60006E817 /* GoogleMobileAds */,
 				A266D72029E605290093A2F2 /* Reachability */,
+				A2F35A1F2A5366FE00EB8215 /* DGCharts */,
 			);
 			productName = "Consulta Placa Fipe";
 			productReference = A230268B29CE894D0016EFAF /* Consulta Placa Fipe.app */;
@@ -483,6 +489,7 @@
 				A267F5B329E0D8F00006E817 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				A267F5C229E0E9D60006E817 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 				A266D71F29E605290093A2F2 /* XCRemoteSwiftPackageReference "Reachability" */,
+				A2F35A1E2A5366FE00EB8215 /* XCRemoteSwiftPackageReference "Charts" */,
 			);
 			productRefGroup = A230268C29CE894D0016EFAF /* Products */;
 			projectDirPath = "";
@@ -573,6 +580,7 @@
 				A2C8CD1629DA6EFD000196D2 /* CompleteFipeViewModel.swift in Sources */,
 				A2C8CD0C29DA5D0E000196D2 /* AnoFipeVC.swift in Sources */,
 				A2C8CCFC29D8E1CB000196D2 /* TabelaFipeViewModel.swift in Sources */,
+				A2D05F7E2A560DB100388E1F /* CurrencyValueFormatter.swift in Sources */,
 				A2C8CD1029DA5E68000196D2 /* AnoModeloFipeViewModel.swift in Sources */,
 				A23026D529CEB7E40016EFAF /* ConsultaPlacaModel.swift in Sources */,
 				A2C8CCE629D85E85000196D2 /* TabelaFipeVC.swift in Sources */,
@@ -878,6 +886,14 @@
 				minimumVersion = 10.0.0;
 			};
 		};
+		A2F35A1E2A5366FE00EB8215 /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -930,6 +946,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A267F5C229E0E9D60006E817 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
 			productName = GoogleMobileAds;
+		};
+		A2F35A1F2A5366FE00EB8215 /* DGCharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A2F35A1E2A5366FE00EB8215 /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = DGCharts;
 		};
 /* End XCSwiftPackageProductDependency section */
 
