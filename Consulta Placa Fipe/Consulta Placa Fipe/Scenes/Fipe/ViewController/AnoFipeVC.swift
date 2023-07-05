@@ -1,8 +1,8 @@
 //
-//  AnoFipeVC.swift
+//  AnoFipeVC.swift
 //  Consulta Placa Fipe
 //
-//  Created by Lucas Barcelos on 02/04/23.
+//  Created by Lucas Barcelos on 05/07/23.
 //
 
 import UIKit
@@ -57,7 +57,7 @@ class AnoFipeVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "ResultadoFipeVC") {
             let vc = segue.destination as! ResultadoFipeVC
-            guard let result = sender as? CompleteFipeModel else { return }
+            guard let result = sender as? [CompleteFipeModel] else { return }
             vc.resultFipe = result
         }
     }
@@ -65,7 +65,7 @@ class AnoFipeVC: UIViewController {
     // MARK: - Methods
     func validateYearList() {
         for data in yearModel {
-            if data.label == "32000" || data.label == "32000 Gasolina" {
+            if data.label == "32000" || data.label == "32000 Gasolina" || data.label == "32000 Diesel" {
                 yearModel.remove(at: aux)
             }
         }
@@ -132,18 +132,28 @@ extension AnoFipeVC: UITableViewDelegate, UITableViewDataSource {
         self.yearSelected = yearModel[indexPath.section].value
         DispatchQueue.main.async {
             AnimationLoading.start()
-            self.completeFipeViewModel.serviceAPI?.fetchComplete(vehicleType: self.vehicleTypeSelected,
-                                                                 brandCode: self.brandCodeSelected,
-                                                                 modelCode: self.modelCodeSelected,
-                                                                 yearFuel: self.yearSelected)
+            
+            let listaMesesHistorico = UserDefaults.standard.getHistoricReference()
+            let ultimosMeses = Array(listaMesesHistorico.prefix(12))
+            
+            self.completeFipeViewModel.serviceAPI?.fetchLastMonths(months: ultimosMeses,
+                                                                   vehicleType: self.vehicleTypeSelected,
+                                                                   brandCode: self.brandCodeSelected,
+                                                                   modelCode: self.modelCodeSelected,
+                                                                   yearFuel: self.yearSelected) {
+                (results: [CompleteFipeModel], error: Error?) in
+                print("Request final FIPE realizada!")
+            }
         }
     }
 }
 
 extension AnoFipeVC: CompleteFipeViewModelProtocol {
-    func successGoToResult(result: CompleteFipeModel?) {
+    func successGoToResult(result: [CompleteFipeModel]?) {
         DispatchQueue.main.async {
             AnimationLoading.stop()
+            GoogleAdsManager.successCounter += 1
+            
             self.performSegue(withIdentifier: "ResultadoFipeVC", sender: result)
         }
     }
