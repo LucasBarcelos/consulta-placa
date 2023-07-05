@@ -20,6 +20,14 @@ func incrementAppRuns() {                   // counter for number of runs for th
     
 }
 
+func resetAppRuns() {
+    let usD = UserDefaults()
+    let runs = 0
+    usD.setValuesForKeys([runIncrementerSetting: runs])
+    usD.synchronize()
+    print("Run Counts are reseted")
+}
+
 func getRunCounts () -> Int { // Reads number of runs from UserDefaults and returns it.
     
     let usD = UserDefaults()
@@ -43,6 +51,7 @@ func showReview() {
         if #available(iOS 10.3, *) {
             print("Review Requested")
             SKStoreReviewController.requestReview()
+            resetAppRuns()
         } else {
             // Fallback on earlier versions
         }
