@@ -46,9 +46,12 @@ class ResultadoFipeVC: UIViewController {
                 } else {
                     print("Anúncio FIPE - intersticial não está pronto ainda.")
                 }
+            } else {
+                showReview()
             }
         }
-        
+
+        incrementAppRuns()
         setupFipe()
         setupViewChart()
         setupChart()

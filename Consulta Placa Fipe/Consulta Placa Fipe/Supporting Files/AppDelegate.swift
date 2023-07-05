@@ -19,6 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        // Request Review
+        incrementAppRuns()
+        
         // Request to get the current (last) month and code about FIPE
         let serviceAPI = FipeReferenceMonthAPI()
         serviceAPI.fetchReferenceMonth()

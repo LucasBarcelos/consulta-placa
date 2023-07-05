@@ -43,6 +43,7 @@ class ResultadoConsultaPlacaVC: UIViewController {
         validatePlateImage()
         validateSituationMessage()
         setupData()
+        incrementAppRuns()
         
         // Delegates
         infoFipeCollectionView.delegate = self
@@ -60,6 +61,8 @@ class ResultadoConsultaPlacaVC: UIViewController {
                 } else {
                     print("Anúncio PLACA - intersticial não está pronto ainda.")
                 }
+            } else {
+                showReview()
             }
         }
     }

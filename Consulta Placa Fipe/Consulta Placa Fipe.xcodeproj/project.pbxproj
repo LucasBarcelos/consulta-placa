@@ -71,6 +71,7 @@
 		A2C8CD1629DA6EFD000196D2 /* CompleteFipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C8CD1529DA6EFD000196D2 /* CompleteFipeViewModel.swift */; };
 		A2D05F7E2A560DB100388E1F /* CurrencyValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D05F7D2A560DB100388E1F /* CurrencyValueFormatter.swift */; };
 		A2D05F802A561BFE00388E1F /* AnoFipeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D05F7F2A561BFE00388E1F /* AnoFipeVC.swift */; };
+		A2D05F822A56254900388E1F /* ReviewRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2D05F812A56254900388E1F /* ReviewRequest.swift */; };
 		A2F35A142A4FE16F00EB8215 /* UICollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F35A132A4FE16F00EB8215 /* UICollectionViewExtension.swift */; };
 		A2F35A172A51247E00EB8215 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F35A162A51247E00EB8215 /* CustomCollectionViewCell.swift */; };
 		A2F35A202A5366FE00EB8215 /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = A2F35A1F2A5366FE00EB8215 /* DGCharts */; };
@@ -134,6 +135,7 @@
 		A2C8CD1529DA6EFD000196D2 /* CompleteFipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteFipeViewModel.swift; sourceTree = "<group>"; };
 		A2D05F7D2A560DB100388E1F /* CurrencyValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyValueFormatter.swift; sourceTree = "<group>"; };
 		A2D05F7F2A561BFE00388E1F /* AnoFipeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnoFipeVC.swift; sourceTree = "<group>"; };
+		A2D05F812A56254900388E1F /* ReviewRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRequest.swift; sourceTree = "<group>"; };
 		A2F35A132A4FE16F00EB8215 /* UICollectionViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtension.swift; sourceTree = "<group>"; };
 		A2F35A162A51247E00EB8215 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -242,6 +244,7 @@
 				A2C8CCFD29D9F0D6000196D2 /* UtilsPreference.swift */,
 				A2BC25512A1D6BD400E018F8 /* GoogleAdsManager.swift */,
 				A2D05F7D2A560DB100388E1F /* CurrencyValueFormatter.swift */,
+				A2D05F812A56254900388E1F /* ReviewRequest.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -576,6 +579,7 @@
 				A23026C029CEB6090016EFAF /* AnimationLoading.swift in Sources */,
 				A2C8CD1229DA6862000196D2 /* ResultadoFipeVC.swift in Sources */,
 				A2C8CD0829DA4E67000196D2 /* FipeModelsAPI.swift in Sources */,
+				A2D05F822A56254900388E1F /* ReviewRequest.swift in Sources */,
 				A230268F29CE894D0016EFAF /* AppDelegate.swift in Sources */,
 				A2C8CD1629DA6EFD000196D2 /* CompleteFipeViewModel.swift in Sources */,
 				A2C8CCFC29D8E1CB000196D2 /* TabelaFipeViewModel.swift in Sources */,
@@ -758,7 +762,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Consulta Placa Fipe/Consulta Placa Fipe.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 2E384GW2PK;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -799,7 +803,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Consulta Placa Fipe/Consulta Placa Fipe.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 2E384GW2PK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Consulta Placa Fipe/Info.plist";
