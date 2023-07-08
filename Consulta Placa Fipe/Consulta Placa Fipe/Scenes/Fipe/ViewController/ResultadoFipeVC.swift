@@ -103,13 +103,9 @@ class ResultadoFipeVC: UIViewController {
     }
     
     func setupChart() {
-        let chartWidth: CGFloat = self.viewChart.bounds.width - 30// Largura do gráfico (subtraindo 20 para deixar uma margem)
-        let chartHeight: CGFloat = self.viewChart.bounds.height - 10 // Altura  do gráfico
-        let chartX = (self.viewChart.bounds.width - chartWidth) / 2 // Posição X para centralizar o gráfico horizontalmente dentro da viewChart
-        let chartY = (self.viewChart.bounds.height - chartHeight) / 2 // Posição Y para centralizar o gráfico verticalmente dentro da viewChart
+        let chartView = LineChartView()
+        chartView.translatesAutoresizingMaskIntoConstraints = false
 
-        let chartView = LineChartView(frame: CGRect(x: chartX, y: chartY, width: chartWidth, height: chartHeight))
-        
         // Criando lista de valores já em Double
         guard let resultado = resultFipe else { return }
         
@@ -183,6 +179,14 @@ class ResultadoFipeVC: UIViewController {
         chartView.rightAxis.enabled = false
         
         self.viewChart.addSubview(chartView)
+        
+        // Configurar restrições
+        NSLayoutConstraint.activate([
+            chartView.leadingAnchor.constraint(equalTo: self.viewChart.leadingAnchor),
+            chartView.trailingAnchor.constraint(equalTo: self.viewChart.trailingAnchor),
+            chartView.topAnchor.constraint(equalTo: self.viewChart.topAnchor),
+            chartView.bottomAnchor.constraint(equalTo: self.viewChart.bottomAnchor)
+        ])
     }
 
     func formatMesReferencia(_ mesReferencia: String) -> String {
