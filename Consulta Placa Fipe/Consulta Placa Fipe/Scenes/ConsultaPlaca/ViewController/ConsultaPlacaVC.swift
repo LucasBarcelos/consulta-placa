@@ -8,6 +8,8 @@
 import UIKit
 import Reachability
 import GoogleMobileAds
+import AppTrackingTransparency
+import AdSupport
 
 class ConsultaPlacaVC: UIViewController {
     
@@ -36,7 +38,7 @@ class ConsultaPlacaVC: UIViewController {
         print("UserDefault FIPE - Mês Atual: \(UserDefaults.standard.getMonthReference())")
         print("UserDefault FIPE - Código Atual: \(UserDefaults.standard.getCodeReference())")
         configButtonEnable(false)
-        
+        requestDataPermission()
         verifyScreenSizeToNotification()
     }
     
@@ -75,6 +77,32 @@ class ConsultaPlacaVC: UIViewController {
         self.plateTextField.autocorrectionType = .no
         self.plateTextField.autocapitalizationType = .allCharacters
         self.plateTextField.tintColor = .clear
+    }
+    
+    func requestDataPermission() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            if #available(iOS 14, *) {
+                ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
+                    switch status {
+                    case .authorized:
+                        // Tracking authorization dialog was shown
+                        // and we are authorized
+                        print("Authorized")
+                    case .denied:
+                        // Tracking authorization dialog was
+                        // shown and permission is denied
+                        print("Denied")
+                    case .notDetermined:
+                        // Tracking authorization dialog has not been shown
+                        print("Not Determined")
+                    case .restricted:
+                        print("Restricted")
+                    @unknown default:
+                        print("Unknown")
+                    }
+                })
+            }
+        }
     }
     
     // Register Notification to move screen when keyboard is
