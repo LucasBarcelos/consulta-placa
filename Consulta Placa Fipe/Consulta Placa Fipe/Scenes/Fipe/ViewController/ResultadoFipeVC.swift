@@ -72,7 +72,7 @@ class ResultadoFipeVC: UIViewController {
         dateFormatter.dateFormat = dateFormat
         
         for item in resultado {
-            let dataA = item.MesReferencia.replacingOccurrences(of: "de", with: "").replacingOccurrences(of: " ", with: "")
+            let dataA = item.MesReferencia.replacingOccurrences(of: " de ", with: "").replacingOccurrences(of: " ", with: "")
             let dataB = mesAtual.replacingOccurrences(of: "/", with: "").replacingOccurrences(of: " ", with: "")
                 
             if dataA == dataB {
