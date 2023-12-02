@@ -762,7 +762,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Consulta Placa Fipe/Consulta Placa Fipe.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 2E384GW2PK;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -803,7 +803,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Consulta Placa Fipe/Consulta Placa Fipe.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 2E384GW2PK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Consulta Placa Fipe/Info.plist";
