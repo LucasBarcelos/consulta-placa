@@ -41,7 +41,7 @@ class ResultadoFipeVC: UIViewController {
             if GoogleAdsManager.successCounter >= 2 {
                 if let interstitial = GoogleAdsManager.shared.interstitial {
                     GoogleAdsManager.successCounter = 0
-                    interstitial.present(fromRootViewController: self)
+                    interstitial.present(from: self)
                     print("Anúncio FIPE - intersticial exibido com sucesso!")
                 } else {
                     print("Anúncio FIPE - intersticial não está pronto ainda.")

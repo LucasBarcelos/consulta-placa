@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6DA9C48D2E24011300B14936 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 6DA9C48C2E24011300B14936 /* GoogleMobileAds */; };
 		A22367AD29D5187900EB9495 /* ResultadoConsultaPlacaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22367AC29D5187900EB9495 /* ResultadoConsultaPlacaVC.swift */; };
 		A230268F29CE894D0016EFAF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A230268E29CE894D0016EFAF /* AppDelegate.swift */; };
 		A230269129CE894D0016EFAF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A230269029CE894D0016EFAF /* SceneDelegate.swift */; };
@@ -43,7 +44,6 @@
 		A267F5BD29E0D8F00006E817 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = A267F5BC29E0D8F00006E817 /* FirebaseMessaging */; };
 		A267F5BF29E0D8F00006E817 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = A267F5BE29E0D8F00006E817 /* FirebaseRemoteConfig */; };
 		A267F5C129E0D8F00006E817 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = A267F5C029E0D8F00006E817 /* FirebaseStorage */; };
-		A267F5C429E0E9D60006E817 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = A267F5C329E0E9D60006E817 /* GoogleMobileAds */; };
 		A29402E829D24DDE003EA6EC /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29402E529D24DDD003EA6EC /* UITextFieldExtension.swift */; };
 		A29402E929D24DDE003EA6EC /* NSMutableAttributedStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29402E629D24DDD003EA6EC /* NSMutableAttributedStringExtension.swift */; };
 		A29402EA29D24DDE003EA6EC /* UIDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29402E729D24DDD003EA6EC /* UIDeviceExtension.swift */; };
@@ -148,9 +148,9 @@
 				A267F5BD29E0D8F00006E817 /* FirebaseMessaging in Frameworks */,
 				A267F5B529E0D8F00006E817 /* FirebaseAnalytics in Frameworks */,
 				A267F5B929E0D8F00006E817 /* FirebaseCrashlytics in Frameworks */,
-				A267F5C429E0E9D60006E817 /* GoogleMobileAds in Frameworks */,
 				A267F5BF29E0D8F00006E817 /* FirebaseRemoteConfig in Frameworks */,
 				A267F5B729E0D8F00006E817 /* FirebaseAuth in Frameworks */,
+				6DA9C48D2E24011300B14936 /* GoogleMobileAds in Frameworks */,
 				A267F5C129E0D8F00006E817 /* FirebaseStorage in Frameworks */,
 				A266D72129E605290093A2F2 /* Reachability in Frameworks */,
 				A267F5BB29E0D8F00006E817 /* FirebaseFirestore in Frameworks */,
@@ -162,10 +162,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6DF975C82E23FFFC007246B1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A230268229CE894D0016EFAF = {
 			isa = PBXGroup;
 			children = (
 				A230268D29CE894D0016EFAF /* Consulta Placa Fipe */,
+				6DF975C82E23FFFC007246B1 /* Frameworks */,
 				A230268C29CE894D0016EFAF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -455,9 +463,9 @@
 				A267F5BC29E0D8F00006E817 /* FirebaseMessaging */,
 				A267F5BE29E0D8F00006E817 /* FirebaseRemoteConfig */,
 				A267F5C029E0D8F00006E817 /* FirebaseStorage */,
-				A267F5C329E0E9D60006E817 /* GoogleMobileAds */,
 				A266D72029E605290093A2F2 /* Reachability */,
 				A2F35A1F2A5366FE00EB8215 /* DGCharts */,
+				6DA9C48C2E24011300B14936 /* GoogleMobileAds */,
 			);
 			productName = "Consulta Placa Fipe";
 			productReference = A230268B29CE894D0016EFAF /* Consulta Placa Fipe.app */;
@@ -490,9 +498,9 @@
 			packageReferences = (
 				A23026A529CEB21C0016EFAF /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				A267F5B329E0D8F00006E817 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				A267F5C229E0E9D60006E817 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 				A266D71F29E605290093A2F2 /* XCRemoteSwiftPackageReference "Reachability" */,
 				A2F35A1E2A5366FE00EB8215 /* XCRemoteSwiftPackageReference "Charts" */,
+				6DA9C48B2E24011300B14936 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 			);
 			productRefGroup = A230268C29CE894D0016EFAF /* Products */;
 			projectDirPath = "";
@@ -770,6 +778,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Placa e FIPE";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Precisamos da sua permissão para salvar imagens das consultas em sua galeria";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Precisamos da sua permissão para salvar imagens das consultas em sua galeria";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Precisamos da sua permissão para poder entregar os melhores anúncios personalizados para você!";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -788,6 +797,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -810,6 +820,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Placa e FIPE";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Precisamos da sua permissão para salvar imagens das consultas em sua galeria";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Precisamos da sua permissão para salvar imagens das consultas em sua galeria";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Precisamos da sua permissão para poder entregar os melhores anúncios personalizados para você!";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -828,6 +839,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -858,6 +870,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		6DA9C48B2E24011300B14936 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.7.0;
+			};
+		};
 		A23026A529CEB21C0016EFAF /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
@@ -882,14 +902,6 @@
 				minimumVersion = 10.0.0;
 			};
 		};
-		A267F5C229E0E9D60006E817 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 10.0.0;
-			};
-		};
 		A2F35A1E2A5366FE00EB8215 /* XCRemoteSwiftPackageReference "Charts" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/danielgindi/Charts.git";
@@ -901,6 +913,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		6DA9C48C2E24011300B14936 /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6DA9C48B2E24011300B14936 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
+		};
 		A23026A629CEB21D0016EFAF /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A23026A529CEB21C0016EFAF /* XCRemoteSwiftPackageReference "lottie-ios" */;
@@ -945,11 +962,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A267F5B329E0D8F00006E817 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
-		};
-		A267F5C329E0E9D60006E817 /* GoogleMobileAds */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A267F5C229E0E9D60006E817 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
-			productName = GoogleMobileAds;
 		};
 		A2F35A1F2A5366FE00EB8215 /* DGCharts */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -56,7 +56,7 @@ class ResultadoConsultaPlacaVC: UIViewController {
             if GoogleAdsManager.successCounter >= 2 {
                 if let interstitial = GoogleAdsManager.shared.interstitial {
                     GoogleAdsManager.successCounter = 0
-                    interstitial.present(fromRootViewController: self)
+                    interstitial.present(from: self)
                     print("Anúncio PLACA - intersticial exibido com sucesso!")
                 } else {
                     print("Anúncio PLACA - intersticial não está pronto ainda.")

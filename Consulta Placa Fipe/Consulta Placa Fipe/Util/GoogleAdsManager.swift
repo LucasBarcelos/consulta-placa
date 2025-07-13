@@ -8,18 +8,18 @@
 import Foundation
 import GoogleMobileAds
 
-public class GoogleAdsManager: NSObject, GADFullScreenContentDelegate {
+public class GoogleAdsManager: NSObject, FullScreenContentDelegate {
     
     // MARK: - Properties
     public static var successCounter = 0
     public static let shared = GoogleAdsManager()
-    var interstitial: GADInterstitialAd?
+    var interstitial: InterstitialAd?
     
     private override init() {}
     
     func loadInterstitialAd() {
-        let request = GADRequest()
-        GADInterstitialAd.load(withAdUnitID: "ca-app-pub-9923132255263690/4537020851", request: request) { (ad, error) in
+        let request = Request()
+        InterstitialAd.load(with: "ca-app-pub-9923132255263690/4537020851", request: request) { (ad, error) in
             if let error = error {
                 print("Erro ao carregar anúncio intersticial: \(error.localizedDescription)")
             } else {
@@ -31,15 +31,15 @@ public class GoogleAdsManager: NSObject, GADFullScreenContentDelegate {
     }
     
     // Implemente os métodos do GADFullScreenContentDelegate
-    public func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
+    public func ad(_ ad: FullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
       print("Ad did fail to present full screen content.")
     }
     
-    public func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+    public func adWillPresentFullScreenContent(_ ad: FullScreenPresentingAd) {
         print("Ad will present full screen content.")
     }
 
-    public func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+    public func adDidDismissFullScreenContent(_ ad: FullScreenPresentingAd) {
       print("Ad did dismiss full screen content.")
     }
 }
